@@ -48,7 +48,7 @@
 
   &__header {
     position: relative;
-    display: flex;
+    display: none;
     text-align: left;
     margin-top: rem(32);
 
@@ -59,6 +59,10 @@
       bottom: 0;
       left: -6vw;
       width: 100vw;
+    }
+
+    @include breakpoint('medium') {
+      display: flex;
     }
   }
 
