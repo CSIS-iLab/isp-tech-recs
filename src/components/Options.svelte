@@ -188,6 +188,19 @@
   </div>
 </section>
 <div class="selects">
+  <div class="select-container select-technology"> <!-- testing out the mobile view-->
+    <div class="label">Tecnologies</div>
+    <Select
+      indicatorSvg={chevron}
+      showChevron={true}
+      bind:listOpen={isListOpen}
+      {optionIdentifier} labelIdentifier={'name'} items={dataset.states}
+      placeholder="Select a Technology"
+      on:select={(event) => handleSelect(event, 'State')}
+      on:clear={() => handleClear('State')}
+    />
+  </div>
+  
   <div class="select-container">
     <div class="label">State</div>
     <Select

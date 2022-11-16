@@ -70,6 +70,16 @@
 
   @include breakpoint('medium') {
     max-width: rem(350);
+    
+    &.select-technology{
+      display: none;
+    }
+  }
+  
+  @include breakpoint('small') {
+    &.select-technology{
+      display: none;
+    }
   }
 
   input {
