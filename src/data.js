@@ -1,5 +1,13 @@
 import * as d3Fetch from 'd3-fetch'
 
+const googleAPIKey = 'AIzaSyAImbihK2tiRewSFzuJTF_lcgPlGSr7zcg'
+const googleAPIKeyTest = 'AIzaSyBXuQRRw4K4W8E4eGHoSFUSrK-ZwpD4Zz4'
+const googleSpreadsheetKey = '18X7CU49YzbIa-KWJJR1Xz-mmINOdix9tGh7eMjXoXvM'
+const googleSpreadsheetRange = 'content'
+const uURL = `https://content-sheets.googleapis.com/v4/spreadsheets/1H5JH0nsefgXAkGE6VRLUi1H50d0m4IeZBfJNZ-avEaI/values/channels-to-deliver-G2P?key=AIzaSyBXuQRRw4K4W8E4eGHoSFUSrK-ZwpD4Zz4&majorDimension=ROWS`
+
+const contentURL = `https://content-sheets.googleapis.com/v4/spreadsheets/${googleSpreadsheetKey}/values/${googleSpreadsheetRange}?key=${googleAPIKey}&majorDimension=ROWS`
+// const contentURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTLjXKbo0h4ef1Jde8EnQSaJK5Lb5hIRyIVvcl3vQE4u5GntGfgLLeGl7-h3rJAoRf1RhaAs9nifnkw/pub?output=csv'
 const URL =
   'https://docs.google.com/spreadsheets/d/e/2PACX-1vSZbsWyNWxgbsJJd2AuaoNIJ2KkEplWSNK77gxcS_WndRrj1rNnPoxtPNl60HjlmdvQo4UvxBUMEi1S/pub?output=csv'
 
@@ -22,6 +30,19 @@ const tags = [
   'Technology_or_System_Standards',
   'Workforce_Development'
 ]
+
+export function getContent() {
+  const dataPromise = d3Fetch.csv(contentURL).then((res) => {
+    const data = res.map((row, index) => {
+      // console.log(res)
+      return {
+        id: index,
+        overlineSmall: row.overline_small,
+      }
+    })
+    return { data: data }
+  })
+}
 
 export default function getData() {
   const dataPromise = d3Fetch.csv(URL).then((res) => {
