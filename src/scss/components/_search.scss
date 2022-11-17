@@ -63,11 +63,6 @@ label[aria-hidden="true"],
     }    
   }
 
-  &__input--active {
-    box-shadow: 0 1px $color-brand-blue-600;
-    border-radius: 0;
-  }
-
   &__btn {
     position: relative;
     right: rem(5);
@@ -90,7 +85,6 @@ label[aria-hidden="true"],
 
   &__icon {
     position: absolute;
-    //padding-top: rem(9);
     padding-right: .375rem;
     padding-left: .375rem;
     height: 100%;

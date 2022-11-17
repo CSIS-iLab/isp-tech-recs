@@ -1,73 +1,71 @@
 <script>
-  import Icon from "./Icons.svelte";
+  import Icon from './Icons.svelte'
 
-  export let filteredData;
-  let authorities = [];
-  let tags = [];
-  const totalEntries = filteredData.length;
+  export let filteredData
+  let authorities = []
+  let tags = []
+  const totalEntries = filteredData.length
 
   function getMostReferencedAuthorities() {
     filteredData.forEach((element) => {
-      authorities.push(element.authority);
-    });
-    return countOccurences(authorities);
+      authorities.push(element.authority)
+    })
+    return countOccurences(authorities)
   }
 
   function getTopTags() {
     filteredData.forEach((element) => {
       element.tags.forEach((tag) => {
-        tags.push(tag);
-      });
-    });
-    return countOccurences(tags);
+        tags.push(tag)
+      })
+    })
+    return countOccurences(tags)
   }
 
   function countOccurences(array) {
-    const counts = {};
+    const counts = {}
     array.forEach(function (x) {
-      counts[x] = (counts[x] || 0) + 1;
-    });
-    return getTopThree(counts);
+      counts[x] = (counts[x] || 0) + 1
+    })
+    return getTopThree(counts)
   }
 
   function getTopThree(obj) {
     const sortable = Object.fromEntries(
       Object.entries(obj).sort(([, a], [, b]) => b - a)
-    );
+    )
 
-    let topThree = [];
-    let objNames = Object.keys(sortable);
+    let topThree = []
+    let objNames = Object.keys(sortable)
 
     objNames.forEach((name, i) => {
       if (i < 3) {
-        topThree.push({ [name]: sortable[name] });
+        topThree.push({ [name]: sortable[name] })
       }
-    });
-    return topThree;
+    })
+    return topThree
   }
 
-  const topTags = getTopTags();
-  const mostReferencedAuhorities = getMostReferencedAuthorities();
+  const topTags = getTopTags()
+  const mostReferencedAuhorities = getMostReferencedAuthorities()
 </script>
 
 <div class="wrapper">
   <main class="container intro-content">
     <p class="intro-content__overline--small">
-      Clean Resilient States Initiative
+      Technology Policy Initiative
     </p>
     <p class="intro-content__overline--regular">
-      by the Energy Security and Climate Change Program
+      by the International Security Program
     </p>
-    <h1 class="intro-content__title">
-      Template for a database SPA
-    </h1>
+    <h1 class="intro-content__title">Technology Policy Recommendations</h1>
     <p class="intro-content__introduction">
-      A curated database of state-level activities facilitating emissions
-      reductions, positive economic outcomes, and climate resilience—from the <a
+      A curated database of technology policy recommendations created by the <a
         class="intro-content__link"
         href="https://www.csis.org/programs/energy-security-and-climate-change-program/projects/clean-resilient-states-initiative"
-        target="_blank">Clean Resilient States Initiative</a
-      >, created by the CSIS Energy Security & Climate Change Program.
+        target="_blank"
+        rel="noreferrer">CSIS International Security Program</a
+      >.
     </p>
     <p class="intro-content__more">
       <a class="intro-content__link intro-content__link--more" href="#about"
@@ -134,5 +132,5 @@
 </div>
 
 <style lang="scss">
-  @use "../scss/components/intro-content";
+  @use '../scss/components/intro-content'
 </style>
