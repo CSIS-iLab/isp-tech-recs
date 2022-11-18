@@ -13,7 +13,7 @@
     dataset = res
     contentDataset = resContent
     if (contentDataset) {
-      console.log(contentDataset)
+      console.log(contentDataset.data)
     }
   })
 </script>
