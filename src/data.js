@@ -45,11 +45,17 @@ const tags = [
 // }
 
 export async function getContent() {
-  const RESPONSE = await fetch(contentURL)
-  const DATA = await RESPONSE.json()
-  return DATA
+  const obj = {}
+  const response = await fetch(contentURL)
+  const data = await response.json()
+  // const dataFormatted = data.forEach(element => {
+  //   obj[`$element`] = element
+  // })
+  // console.log(obj)
+  return data
 }
-export default function getData() {
+
+export function getData() {
   const dataPromise = d3Fetch.csv(URL).then((res) => {
     const data = res.map((row, index) => {
       return {
@@ -87,6 +93,8 @@ export default function getData() {
   })
   return dataPromise
 }
+
+export default { getData, getContent}
 
 function formatAuthority(array) {
   return [...new Set(array.map((el) => el.authority))]

@@ -1,7 +1,6 @@
 <script>
   import { onMount } from 'svelte'
-  import getData from './data'
-  import getContent from './data'
+  import { getContent, getData } from './data'
   import MainContainer from './components/MainContainer.svelte'
 
   let dataset = {}
@@ -11,9 +10,12 @@
     const res = await getData()
     const resContent = await getContent()
     dataset = res
-    contentDataset = resContent
+    contentDataset = resContent.values
     if (contentDataset) {
-      console.log(contentDataset.data)
+      console.log(contentDataset)
+    }
+    if (dataset) {
+      console.log(dataset)
     }
   })
 </script>
