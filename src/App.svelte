@@ -1,22 +1,30 @@
 <script>
   import { onMount } from 'svelte'
-  import { getContent, getData } from './data'
+  import { getContent, getNewData, getData } from './data'
   import MainContainer from './components/MainContainer.svelte'
 
   let dataset = {}
   let contentDataset = {}
+  let newDataset = {}
 
   onMount(async () => {
     const res = await getData()
     const resContent = await getContent()
+    const resNewData = await getNewData()
     dataset = res
+    newDataset = resNewData.values
     contentDataset = resContent.values
+
     if (contentDataset) {
       console.log(contentDataset)
     }
     if (dataset) {
       console.log(dataset)
     }
+    if (newDataset) {
+      console.log(newDataset)
+    }
+
   })
 </script>
 

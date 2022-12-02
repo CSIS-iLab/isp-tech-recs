@@ -3,10 +3,12 @@ import * as d3Fetch from 'd3-fetch'
 const googleAPIKey = 'AIzaSyAImbihK2tiRewSFzuJTF_lcgPlGSr7zcg'
 const googleAPIKeyTest = 'AIzaSyBXuQRRw4K4W8E4eGHoSFUSrK-ZwpD4Zz4'
 const googleSpreadsheetKey = '18X7CU49YzbIa-KWJJR1Xz-mmINOdix9tGh7eMjXoXvM'
-const googleSpreadsheetRange = 'content'
+const googleSpreadsheetContent = 'content'
+const googleSpreadsheetData = 'data'
 const uURL = `https://content-sheets.googleapis.com/v4/spreadsheets/1H5JH0nsefgXAkGE6VRLUi1H50d0m4IeZBfJNZ-avEaI/values/channels-to-deliver-G2P?key=AIzaSyBXuQRRw4K4W8E4eGHoSFUSrK-ZwpD4Zz4&majorDimension=ROWS`
 
-const contentURL = `https://content-sheets.googleapis.com/v4/spreadsheets/${googleSpreadsheetKey}/values/${googleSpreadsheetRange}?key=${googleAPIKeyTest}&majorDimension=ROWS`
+const contentURL = `https://content-sheets.googleapis.com/v4/spreadsheets/${googleSpreadsheetKey}/values/${googleSpreadsheetContent}?key=${googleAPIKeyTest}&majorDimension=ROWS`
+const dataURL = `https://content-sheets.googleapis.com/v4/spreadsheets/${googleSpreadsheetKey}/values/${googleSpreadsheetData}?key=${googleAPIKeyTest}&majorDimension=ROWS`
 // const contentURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTLjXKbo0h4ef1Jde8EnQSaJK5Lb5hIRyIVvcl3vQE4u5GntGfgLLeGl7-h3rJAoRf1RhaAs9nifnkw/pub?output=csv'
 const URL =
   'https://docs.google.com/spreadsheets/d/e/2PACX-1vSZbsWyNWxgbsJJd2AuaoNIJ2KkEplWSNK77gxcS_WndRrj1rNnPoxtPNl60HjlmdvQo4UvxBUMEi1S/pub?output=csv'
@@ -31,27 +33,20 @@ const tags = [
   'Workforce_Development'
 ]
 
-// export function getContent() {
-//   const dataPromise = d3Fetch.csv(contentURL).then((res) => {
-//     const data = res.map((row, index) => {
-//       // console.log(res)
-//       return {
-//         id: index,
-//         overlineSmall: row.overline_small,
-//       }
-//     })
-//     return { data: data }
-//   })
-// }
-
 export async function getContent() {
   const obj = {}
-  const response = await fetch(contentURL)
+  const response = await fetch( contentURL )
   const data = await response.json()
   // const dataFormatted = data.forEach(element => {
   //   obj[`$element`] = element
   // })
   // console.log(obj)
+  return data
+}
+
+export async function getNewData() {
+  const response = await fetch( dataURL )
+  const data = await response.json()
   return data
 }
 
@@ -94,7 +89,7 @@ export function getData() {
   return dataPromise
 }
 
-export default { getData, getContent}
+export default { getData, getNewData, getContent}
 
 function formatAuthority(array) {
   return [...new Set(array.map((el) => el.authority))]
