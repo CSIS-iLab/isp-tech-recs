@@ -55,13 +55,6 @@
       color: $color-brand-blue-600;
       text-decoration: none;
 
-      &--back-top {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        @extend %text-style-ui-3;
-      }
-
       .icon-container {
       // color brand-blue-600
         margin-left: rem(4);

@@ -1,14 +1,31 @@
 <script>
-  import { onMount } from "svelte";
-  import getData from "./data";
-  import MainContainer from "./components/MainContainer.svelte";
+  import { onMount } from 'svelte'
+  import { getContent, getNewData, getData } from './data'
+  import MainContainer from './components/MainContainer.svelte'
 
-  let dataset = {};
+  let dataset = {}
+  let contentDataset = {}
+  let newDataset = {}
 
   onMount(async () => {
-    const res = await getData();
-    dataset = res;
-  });
+    const res = await getData()
+    const resContent = await getContent()
+    const resNewData = await getNewData()
+    dataset = res
+    newDataset = resNewData.values
+    contentDataset = resContent.values
+
+    if (contentDataset) {
+      console.log(contentDataset)
+    }
+    if (dataset) {
+      console.log(dataset)
+    }
+    if (newDataset) {
+      console.log(newDataset)
+    }
+
+  })
 </script>
 
 {#if dataset.data && dataset.data.length > 0}
@@ -20,5 +37,5 @@
 {/if}
 
 <style lang="scss" global>
-  @use "./scss/main.scss";
+  @use './scss/main.scss';
 </style>
