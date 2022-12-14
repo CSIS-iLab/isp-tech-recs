@@ -1,14 +1,19 @@
 <script>
   import Button from "./Button.svelte"
+  import Icon from "./Icons.svelte"
   export let reportBlockContent
 </script>
 
 {#if reportBlockContent}
   <div class="report-block">
-    <p>{reportBlockContent.title}</p>
-    <p>{reportBlockContent.description}</p>
-    <img src={reportBlockContent.image} alt={reportBlockContent.imageAlt} class="report-block__image">
-    <Button id="Icon-info" text="Read Report" classes="btn"/>
+    <div class="report-block__text">
+      <p class="report-block__text--title">{reportBlockContent.title}</p>
+      <p class="report-block__text--description">{reportBlockContent.description}</p>
+      <Button id="download-report" text="Read Report" classes="btn btn--outline" ariaLabel="Read Report"/>
+    </div>
+    <div class="report-block__img">
+      <img src={reportBlockContent.image} alt={reportBlockContent.imageAlt} class="report-block__image">
+    </div>
   </div>
 {/if}
 <style lang="scss">

@@ -2,7 +2,7 @@
   import Icon from './Icons.svelte'
   import ReportBlock from './ReportBlock.svelte';
 
-  export let filteredData, contentDataset, reportBlockContent
+  export let filteredData, contentDataset
   let authorities = []
   let tags = []
   const totalEntries = filteredData.length
@@ -71,60 +71,6 @@
       <p>No content found.</p>
     {/if}
   </main>
-  <div class="container">
-    <div class="intro-content__graphs ">
-      <div class="intro-bar">
-        <div class="intro-bar__title">Most Referenced Authorities</div>
-        <div class="intro-bar__content">
-          <div class="intro-bar__column--labels">
-            <!-- iterate and add the most refereced authorities -->
-            {#each mostReferencedAuhorities as authority}
-              <div><span>{Object.keys(authority)}</span></div>
-            {/each}
-          </div>
-          <div
-            class="intro-bar__column--bars"
-            data-total-entries={totalEntries}
-          >
-            <!-- iterate and add the most refereced authorities values -->
-            {#each mostReferencedAuhorities as authority}
-              <div class="bar">
-                <span
-                  style="width: {(Object.values(authority) / totalEntries) *
-                    100}%"
-                />{Object.values(authority)}
-              </div>
-            {/each}
-          </div>
-        </div>
-      </div>
-
-      <div class="intro-bar">
-        <div class="intro-bar__title">Top Tags</div>
-        <div class="intro-bar__content">
-          <div class="intro-bar__column--labels">
-            <!-- iterate and add the top tags -->
-            {#each topTags as tag}
-              <div><span>{Object.keys(tag)}</span></div>
-            {/each}
-          </div>
-          <div
-            class="intro-bar__column--bars"
-            data-total-entries={totalEntries}
-          >
-            <!-- iterate and add the top tags values -->
-            {#each topTags as tag}
-              <div class="bar">
-                <span
-                  style="width:  {(Object.values(tag) / totalEntries) * 100}%"
-                />{Object.values(tag)}
-              </div>
-            {/each}
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 
 <style lang="scss">

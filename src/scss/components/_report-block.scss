@@ -1,5 +1,30 @@
 @use "../abstracts/" as *;
 
 .report-block {
-  background-color: #00ff00;
+  display: flex;
+  column-gap: rem(64);
+  padding-bottom: rem(64);
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: rem(32);
+    max-width: rem(533);
+
+    &--title {
+      font-weight: 700;
+      text-align: left;
+      @include font-size(24px);
+    }
+    
+    &--description {
+      text-align: left;
+      @include font-size(18px);
+    }
+  }
+
+  &__img {
+    width: rem(302);
+  }
 }

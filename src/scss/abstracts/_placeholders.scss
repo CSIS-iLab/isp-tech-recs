@@ -130,3 +130,10 @@
   @extend %text-style-ui-5-caps;
   font-weight: $font-weight-bold;
 }
+
+%font-button {
+  @include font-size(14px);
+  font-family: $font__synthese;
+  font-weight: 600;
+  line-height: 1;
+}
