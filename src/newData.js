@@ -89,7 +89,7 @@ export function getData() {
   return dataPromise
 }
 
-export default { getData, getNewData }
+export default { getData, getNewData, getContent}
 
 function formatAuthority(array) {
   return [...new Set(array.map((el) => el.authority))]

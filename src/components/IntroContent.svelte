@@ -1,7 +1,8 @@
 <script>
   import Icon from './Icons.svelte'
+  import ReportBlock from './ReportBlock.svelte';
 
-  export let filteredData
+  export let filteredData, contentDataset, reportBlockContent
   let authorities = []
   let tags = []
   const totalEntries = filteredData.length
@@ -52,28 +53,23 @@
 
 <div class="wrapper">
   <main class="container intro-content">
-    <p class="intro-content__overline--small">
-      Technology Policy Initiative
-    </p>
-    <p class="intro-content__overline--regular">
-      by the International Security Program
-    </p>
-    <h1 class="intro-content__title">Technology Policy Recommendations</h1>
-    <p class="intro-content__introduction">
-      A curated database of technology policy recommendations created by the <a
-        class="intro-content__link"
-        href="https://www.csis.org/programs/energy-security-and-climate-change-program/projects/clean-resilient-states-initiative"
-        target="_blank"
-        rel="noreferrer">CSIS International Security Program</a
-      >.
-    </p>
-    <p class="intro-content__more">
-      <a class="intro-content__link intro-content__link--more" href="#about"
-        ><span class="intro-content__more__icon-container">
-          <Icon class="icon__info" name="Icon-info" />
-        </span><span>More on this database</span></a
-      >
-    </p>
+    {#if contentDataset }
+      <p class="intro-content__overline--small">
+          {contentDataset.overline_small}
+      </p>
+      <p class="intro-content__overline--regular">
+        {contentDataset.overline_regular}
+      </p>
+      <h1 class="intro-content__title">
+        {contentDataset.intro_content_title}
+      </h1>
+      <p class="intro-content__introduction">
+        {contentDataset.intro_content_introduction}
+      </p>
+      <ReportBlock reportBlockContent = { contentDataset.report_block} />
+    {:else}
+      <p>No content found.</p>
+    {/if}
   </main>
   <div class="container">
     <div class="intro-content__graphs ">

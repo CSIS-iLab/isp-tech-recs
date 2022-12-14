@@ -6,7 +6,7 @@
   import About from './About.svelte'
   import Footer from './Footer.svelte'
 
-  export let dataset
+  export let dataset, contentDataset
   let selectedState = ''
   let selectedResourceType = ''
   let selectedAuthority = ''
@@ -69,7 +69,7 @@
 <div id="site-content">
   <Header />
 
-  <IntroContent filteredData={filteredData()} />
+  <IntroContent filteredData={filteredData()} {contentDataset} />
 
   <section class="table-container">
     <Options
