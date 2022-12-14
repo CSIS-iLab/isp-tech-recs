@@ -13,18 +13,21 @@
     max-width: rem(533);
 
     &--title {
-      font-weight: 700;
+      // font-weight: 700;
+      @extend %text-style-heading-4;
       text-align: left;
-      @include font-size(24px);
+      // @include font-size(24px);
     }
     
     &--description {
+      font-weight: 400;
+      @extend %text-style-paragraph-1;
       text-align: left;
-      @include font-size(18px);
     }
   }
 
   &__img {
+    display: flex;
     width: rem(302);
   }
 }
