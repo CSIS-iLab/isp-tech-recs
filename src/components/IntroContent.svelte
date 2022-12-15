@@ -61,10 +61,10 @@
         {contentDataset.overline_regular}
       </p>
       <h1 class="intro-content__title">
-        {contentDataset.intro_content_title}
+        {contentDataset.intro_content.title}
       </h1>
       <p class="intro-content__introduction">
-        {contentDataset.intro_content_introduction}
+        {contentDataset.intro_content.introduction}
       </p>
       <ReportBlock reportBlockContent = { contentDataset.report_block} />
     {:else}

@@ -28,6 +28,7 @@
 
   &__img {
     display: flex;
+    align-self: stretch;
     width: rem(302);
   }
 }
