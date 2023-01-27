@@ -7,22 +7,16 @@
     <h2 class="about__subtitle">About</h2>
     <div class="about__description">
       <p>
-        This database details a curated selection of activities in the areas of
-        emissions reduction, economic development, and climate resilience from
-        16 diverse and representative states. The activities included are
-        derived from research conducted for the Clean Resilient State Initiative
-        and are deemed novel, impactful, or otherwise significant by the
-        researchers.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
       </p>
       <p>
-        The 16 states highlighted in this database were selected to reflect the
-        diversity in state approaches to energy and emissions. Half of the
-        states were selected due to their roles as the top U.S. energy consumers
-        (TX, CA, LA, FL, NY, PA, OH, IL), representing each census region of the
-        country (Northeast, Midwest, West, and South). The other half (MA, MN,
-        OR, NM, GA, SD, VA, WY) were selected to ensure a diversity of
-        regulatory and political environments for climate and energy issues. For
-        more details, see the appendices of the associated reports, below.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
       </p>
     </div>
     <div class="about__reports">
@@ -31,10 +25,10 @@
         <li>
           <a
             class="about__reports__link"
-            href="https://www.csis.org/analysis/insights-emissions-reduction-among-us-states"
+            href="https://www.csis.org/"
             target="_blank"
             rel="noreferrer"
-            >Insights on Emissions Reduction among U.S. States<span
+            >Report Title<span
               class="icon-container"
               ><Icon class="icon__report" name="Icon-open-blank" /></span
             ></a
@@ -43,10 +37,10 @@
         <li>
           <a
             class="about__reports__link"
-            href="https://www.csis.org/analysis/state-strategies-expanding-economic-opportunity-clean-energy"
+            href="https://www.csis.org/"
             target="_blank"
             rel="noreferrer"
-            >State Strategies for Expanding Economic Opportunity in Clean Energy<span
+            >Report 2<span
               class="icon-container"
               ><Icon class="icon__report" name="Icon-open-blank" /></span
             ></a
@@ -55,10 +49,10 @@
         <li>
           <a
             class="about__reports__link"
-            href="https://www.csis.org/analysis/making-energy-resilient"
+            href="https://www.csis.org/"
             target="_blank"
             rel="noreferrer"
-            >Making Energy Resilient<span class="icon-container"
+            >Report 3<span class="icon-container"
               ><Icon class="icon__report" name="Icon-open-blank" /></span
             ></a
           >
@@ -71,19 +65,18 @@
           class="about__initiative__link"
           href="https://www.csis.org/programs/energy-security-and-climate-change-program/projects/clean-resilient-states-initiative"
           target="_blank"
-          rel="noreferrer">Clean Resilient States Initiative</a
-        > is a project developed by the CSIS Energy Security & Climate Change Program
-        to assess the extent to which state policies facilitate greenhouse gas emissions
-        reductions, positive economic outcomes, and resilience to climate-related
-        impacts. This database and its respective papers are meant to provide guidance
-        to policymakers, identify priorities for future research, and promote knowledge
-        sharing among key stakeholders.
+          rel="noreferrer">Technology Policy Recommendations Initiative</a
+        > is a project developed by the CSIS International Security Program
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
       </p>
     </div>
     <div class="about__development">
       <h3 class="about__development__title">Development Team</h3>
       <p class="about__development__description">
-        The database template is a product of the <a
+        The Technology Policy Recommendations database is a product of the <a
           class="about__development__link"
           href="https://www.csis.org/programs/dracopoulos-ideas-lab"
           target="_blank"
@@ -92,7 +85,7 @@
         Strategic and International Studies.
       </p>
       <p class="about__development__description">
-        Produced by Tucker Harris, Serven Maraghi & José Romero.
+        Produced by Christina Hamm, Tucker Harris, Serven Maraghi, José Romero.
       </p>
     </div>
     <div class="back-top-container">
