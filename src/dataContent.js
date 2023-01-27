@@ -1,4 +1,4 @@
-import * as d3Fetch from 'd3-fetch'
+// import * as d3Fetch from 'd3-fetch'
 
 const googleAPIKey = 'AIzaSyBXuQRRw4K4W8E4eGHoSFUSrK-ZwpD4Zz4'
 const googleSpreadsheetKey = '18X7CU49YzbIa-KWJJR1Xz-mmINOdix9tGh7eMjXoXvM'
