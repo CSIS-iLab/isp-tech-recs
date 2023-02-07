@@ -14,7 +14,7 @@
     const resContent = await getContent()
     const resNewData = await getNewData()
     dataset = res
-    newDataset = resNewData.values
+    newDataset = resNewData
     contentDataset = resContent
 
     // if (contentDataset) {
