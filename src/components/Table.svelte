@@ -9,7 +9,8 @@
   let sortIconContainer
   $: sortClass = 'inactive'
 
-  const sortByColumns = ['activity', 'state', 'authority', 'type of resource']
+  // const sortByColumns = ['activity', 'state', 'authority', 'type of resource']
+  const sortByColumns = ['recommendation', 'technology', 'recommendation type']
 
   function handleClick(e) {
     let title = undefined
@@ -51,7 +52,7 @@
   //   'Tags'
   // ]
 
-  $: sortBy = { col: 'activity', ascending: true }
+  $: sortBy = { col: 'recommendation', ascending: true }
 
   $: sort = (e, column) => {
     column = column.toLowerCase().replace(/\s/g, '_') // replace spaces using regex with undesrscore
@@ -72,7 +73,7 @@
     let sortModifier = sortBy.ascending ? 1 : -1
 
     // Sort by activity title
-    if (column == 'activity') {
+    if (column == 'recommendation') {
       return (filteredData = filteredData.sort((a, b) => {
         if (a.activity.title < b.activity.title) {
           return -1 * sortModifier

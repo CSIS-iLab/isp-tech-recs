@@ -17,12 +17,18 @@
 
   $: totalEntries = filteredData.length
 
-  const technologiesTotal = newDataset.technologies.length
-  $: console.log(technologiesTotal)
+  const technologiesTotal = newDataset.data.filter( row => row.length !== 0)
+  .length
+  $: console.log(newDataset.data)
 
   const policyGoalsTotal = dataset.data.length
   function getPGCount(policyGoal) {
     return dataset.data.filter((row) => row.policy_goals.includes(policyGoal))
+      .length
+  }
+
+  function getTechnologyCount(technology) {
+    return newDataset.data.filter((row) => row.includes(technology))
       .length
   }
 
@@ -99,7 +105,7 @@
       selectedState = event.detail.value
     } else if (selectName === 'Authority') {
       selectedAuthority = event.detail.value
-    } else if (selectName === 'Policy Goal') {
+    } else if (selectName === 'Technology') {
       updateActiveTab(event.target.value)
       selectedPolicyGoal = event.target.value
       console.log(selectedPolicyGoal)
@@ -205,7 +211,7 @@
     <button
       class="options__btn options__btn--tab options__btn--tab--all options__btn--tab--active options__btn--tab--all--active"
       data-tab={'all'}
-      on:click={(event) => handleSelect(event, 'Policy Goal')}
+      on:click={(event) => handleSelect(event, 'Technology')}
       >All <span
         data-count={'all'}
         class="options__count options__count--active">{technologiesTotal}</span
@@ -219,12 +225,12 @@
           .join('-')} "
         data-tab={technology.split('_').join('-')}
         value={technology}
-        on:click={(event) => handleSelect(event, 'Policy Goal')}
+        on:click={(event) => handleSelect(event, 'Technology')}
         >{technology.split('_').join(' ')}
         <span
           data-count={technology.split('_').join('-')}
           class="options__count options__count--{technology.split('_').join('-')}"
-          >{getPGCount(technology)}</span
+          >{getTechnologyCount(technology)}</span
         >
       </button>
     {/each}

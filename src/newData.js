@@ -24,17 +24,11 @@ function formatDataset( data ) {
       // technologies.push(element[0].replaceAll(' ', '-'))
     }
   })
-  // for (let index = 1; index < data.length; index++) {
-  //   const element = data[index]
-  //   if (element[0]) {
-  //     technologies.push(element[0])
-  //     // technologies.push(element[0].replaceAll(' ', '-'))
-  //   }
-  // }
 
   technologies = [...new Set(technologies)]
   return {
     columnNames: columnNames,
     technologies: technologies,
+    data: data.filter((row, index) => row.length !== 0 && row[0] !== '')
   }
 }
