@@ -5,7 +5,7 @@
   import SelectMultiple from './SelectMultiple.svelte'
   import Icon from './Icons.svelte'
 
-  export let dataset
+  export let dataset, newDataset
   export let filteredData
   export let selectedState
   export let selectedResourceType
@@ -16,6 +16,9 @@
   export let row
 
   $: totalEntries = filteredData.length
+
+  const technologiesTotal = newDataset.technologies.length
+  $: console.log(technologiesTotal)
 
   const policyGoalsTotal = dataset.data.length
   function getPGCount(policyGoal) {
@@ -85,6 +88,7 @@
   }
 
   function handleSelect(event, selectName) {
+    console.log(event, selectName);
     if (row.isOpen) {
       row.isOpen = !row.isOpen
       removeRowActiveTitleStyle()
@@ -98,6 +102,7 @@
     } else if (selectName === 'Policy Goal') {
       updateActiveTab(event.target.value)
       selectedPolicyGoal = event.target.value
+      console.log(selectedPolicyGoal)
     } else {
       selectedResourceType = event.detail.value
     }
@@ -192,7 +197,7 @@
 </script>
 
 <section class="table-container__header">
-  <h2 class="table-container__subtitle">Explore Policy Recomendations</h2>
+  <h2 class="table-container__subtitle">Explore Technology Policy Recommendations</h2>
 </section>
 
 <section class="options__container">
@@ -203,22 +208,23 @@
       on:click={(event) => handleSelect(event, 'Policy Goal')}
       >All <span
         data-count={'all'}
-        class="options__count options__count--active">{policyGoalsTotal}</span
+        class="options__count options__count--active">{technologiesTotal}</span
       >
     </button>
-    {#each dataset.policyGoals as policy}
+    <!-- {#each dataset.policyGoals as policy} -->
+    {#each newDataset.technologies as technology}
       <button
-        class="options__btn options__btn--tab options__btn--tab--{policy
+        class="options__btn options__btn--tab options__btn--tab--{technology
           .split('_')
           .join('-')} "
-        data-tab={policy.split('_').join('-')}
-        value={policy}
+        data-tab={technology.split('_').join('-')}
+        value={technology}
         on:click={(event) => handleSelect(event, 'Policy Goal')}
-        >{policy.split('_').join(' ')}
+        >{technology.split('_').join(' ')}
         <span
-          data-count={policy.split('_').join('-')}
-          class="options__count options__count--{policy.split('_').join('-')}"
-          >{getPGCount(policy)}</span
+          data-count={technology.split('_').join('-')}
+          class="options__count options__count--{technology.split('_').join('-')}"
+          >{getPGCount(technology)}</span
         >
       </button>
     {/each}
@@ -242,7 +248,7 @@
   </div>
 
   <div class="select-container">
-    <div class="label">State</div>
+    <div class="label">Actor</div>
     <Select
       indicatorSvg={chevron}
       showChevron={true}
@@ -257,7 +263,7 @@
   </div>
 
   <div class="select-container">
-    <div class="label">Authority</div>
+    <div class="label">Recommendation Type</div>
     <Select
       indicatorSvg={chevron}
       showChevron={true}
@@ -271,7 +277,7 @@
   </div>
 
   <div class="select-container">
-    <div class="label">Resource Type</div>
+    <div class="label">Recommendation Status</div>
     <Select
       indicatorSvg={chevron}
       showChevron={true}
@@ -281,15 +287,6 @@
       placeholder="Select a type"
       on:select={(event) => handleSelect(event, 'ResourceType')}
       on:clear={(event) => handleClear(event, 'ResourceType')}
-    />
-  </div>
-
-  <div class="select-container">
-    <div class="label">Tags</div>
-    <SelectMultiple
-      bind:selectedValue={selectedTags}
-      options={dataset.tags}
-      selectName="tags"
     />
   </div>
 </div>

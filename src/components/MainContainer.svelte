@@ -6,7 +6,7 @@
   import About from './About.svelte'
   import Footer from './Footer.svelte'
 
-  export let dataset, contentDataset
+  export let dataset, contentDataset, newDataset
   let selectedState = ''
   let selectedResourceType = ''
   let selectedAuthority = ''
@@ -74,6 +74,7 @@
   <section class="table-container">
     <Options
       {dataset}
+      {newDataset}
       filteredData={filteredData()}
       bind:row
       bind:selectedAuthority

@@ -31,8 +31,11 @@
   })
 </script>
 
-{#if dataset.data && dataset.data.length > 0 && contentDataset.dataFormatted && contentDataset.dataFormatted.length > 0}
-  <MainContainer {dataset} contentDataset = {contentDataset.dataFormatted[0]}  />
+{#if dataset.data && dataset.data.length > 0 &&
+  contentDataset.dataFormatted && contentDataset.dataFormatted.length > 0 &&
+  newDataset.technologies && newDataset.technologies.length > 0
+}
+  <MainContainer {dataset} contentDataset = {contentDataset.dataFormatted[0]} {newDataset} />
 {:else}
   <div class="loading-container">
     <div class="loading" />

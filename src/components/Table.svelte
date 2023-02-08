@@ -36,13 +36,20 @@
   }
 
   const headerNames = [
-    'Activity',
-    'State',
-    'Policy Goals',
-    'Authority',
-    'Type of Resource',
-    'Tags'
+    'Recommendation',
+    'Technology',
+    'Actor',
+    'Recommendation Type',
+    'Recommendation Status'
   ]
+  // const headerNames = [
+  //   'Activity',
+  //   'State',
+  //   'Policy Goals',
+  //   'Authority',
+  //   'Type of Resource',
+  //   'Tags'
+  // ]
 
   $: sortBy = { col: 'activity', ascending: true }
 
@@ -95,7 +102,9 @@
     const divActivity = document.querySelector(
       '.table__cell--header__container__activity'
     )
-    divActivity.children[1].children[1].classList.add('sort-icon--active')
+    if (divActivity) {
+      divActivity.children[1].children[1].classList.add('sort-icon--active')
+    }
     // Sync horizontal scroll of table header and table body
     // Inspired by https://codepen.io/Goweb/pen/rgrjWx
     const scrollSync = () => {
@@ -196,19 +205,6 @@
             <td class="table__body__cell table__body__cell--data"
               >{rows.type_of_resource}</td
             >
-            <td
-              class="table__body__cell table__body__cell--data table__body__cell__icon-container"
-            >
-              {#each rows.tags as tag}
-                <span
-                  class="icon-tag-container"
-                  use:tooltip={{ theme: 'energy' }}
-                  aria-hidden="true"
-                  aria-label={tag}
-                  ><Icon name="icon {tag}" class="icon__tags" /></span
-                >
-              {/each}
-            </td>
           </tr>
           <tr class="extra-content hide">
             <td class="table__body__cell" colspan="6">
@@ -219,7 +215,7 @@
                     href={rows.activity.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    >Go to resource<span class="icon-container"
+                    >See Full Report<span class="icon-container"
                       ><Icon name="Icon-open-blank" class="icon" /></span
                     ></a
                   >
