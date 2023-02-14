@@ -20,9 +20,9 @@
     // if (contentDataset) {
     //   console.log(contentDataset)
     // }
-    // if (dataset) {
-    //   console.log(dataset)
-    // }
+    if (dataset) {
+      console.log(dataset)
+    }
     
     if (newDataset) {
       console.log(newDataset)

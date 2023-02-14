@@ -94,7 +94,7 @@
   }
 
   function handleSelect(event, selectName) {
-    console.log(event, selectName);
+    // console.log(event, selectName);
     if (row.isOpen) {
       row.isOpen = !row.isOpen
       removeRowActiveTitleStyle()
@@ -108,7 +108,7 @@
     } else if (selectName === 'Technology') {
       updateActiveTab(event.target.value)
       selectedPolicyGoal = event.target.value
-      console.log(selectedPolicyGoal)
+      // console.log(selectedPolicyGoal)
     } else {
       selectedResourceType = event.detail.value
     }
