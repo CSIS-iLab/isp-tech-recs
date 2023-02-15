@@ -53,6 +53,7 @@ export async function getNewData() {
 export function getData() {
   const dataPromise = d3Fetch.csv(URL).then((res) => {
     const data = res.map((row, index) => {
+      // console.log(row)
       return {
         id: index,
         policy_goals: policyGoals.filter((goalName) => row[goalName]),

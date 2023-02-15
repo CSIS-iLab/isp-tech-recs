@@ -47,8 +47,8 @@
     return topThree
   }
 
-  const topTags = getTopTags()
-  const mostReferencedAuhorities = getMostReferencedAuthorities()
+  // const topTags = getTopTags()
+  // const mostReferencedAuhorities = getMostReferencedAuthorities()
 </script>
 
 <div class="wrapper">

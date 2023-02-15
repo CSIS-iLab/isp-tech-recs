@@ -7,11 +7,14 @@
 
   export let dataset, newDataset
   export let filteredData
-  export let selectedState
+  export let selectedActor
+  export let selectedType
+  export let selectedTechnology
+  // export let selectedState
   export let selectedResourceType
   export let selectedAuthority
-  export let selectedTags
-  export let selectedPolicyGoal
+  // export let selectedTags
+  // export let selectedPolicyGoal
   export let searchText = ''
   export let row
 
@@ -19,7 +22,7 @@
 
   const technologiesTotal = newDataset.data.filter( row => row.length !== 0)
   .length
-  $: console.log(newDataset.data)
+  // $: console.log(newDataset.actors)
 
   const policyGoalsTotal = dataset.data.length
   function getPGCount(policyGoal) {
@@ -28,7 +31,8 @@
   }
 
   function getTechnologyCount(technology) {
-    return newDataset.data.filter((row) => row.includes(technology))
+    // console.log(newDataset)
+    return newDataset.data.filter( row => row.technology.includes(technology))
       .length
   }
 
@@ -101,13 +105,15 @@
       removeExtraContentStyle()
       switchRowBottomLine()
     }
-    if (selectName === 'State') {
-      selectedState = event.detail.value
-    } else if (selectName === 'Authority') {
-      selectedAuthority = event.detail.value
+    if (selectName === 'Actor') {
+      selectedActor = event.detail.value
+    } else if (selectName === 'Type') {
+      selectedType = event.detail.value
+      // selectedAuthority = event.detail.value
     } else if (selectName === 'Technology') {
       updateActiveTab(event.target.value)
-      selectedPolicyGoal = event.target.value
+      selectedTechnology = event.target.value
+      // selectedPolicyGoal = event.target.value
       // console.log(selectedPolicyGoal)
     } else {
       selectedResourceType = event.detail.value
@@ -121,8 +127,8 @@
       removeExtraContentStyle()
       switchRowBottomLine()
     }
-    if (selectName === 'State') {
-      selectedState = ''
+    if (selectName === 'Actor') {
+      selectedActor = ''
     } else if (selectName === 'Authority') {
       selectedAuthority = ''
     } else {
@@ -248,8 +254,8 @@
       labelIdentifier={'name'}
       items={dataset.states}
       placeholder="Select a Technology"
-      on:select={(event) => handleSelect(event, 'State')}
-      on:clear={() => handleClear('State')}
+      on:select={(event) => handleSelect(event, 'Technology')}
+      on:clear={() => handleClear('Technology')}
     />
   </div>
 
@@ -258,13 +264,12 @@
     <Select
       indicatorSvg={chevron}
       showChevron={true}
-      bind:listOpen={isListOpen}
       {optionIdentifier}
-      labelIdentifier={'name'}
-      items={dataset.states}
-      placeholder="Select a state"
-      on:select={(event) => handleSelect(event, 'State')}
-      on:clear={() => handleClear('State')}
+      {labelIdentifier}
+      items={newDataset.actors}
+      placeholder="Select an actor"
+      on:select={(event) => handleSelect(event, 'Actor')}
+      on:clear={() => handleClear('Actor')}
     />
   </div>
 
@@ -275,10 +280,10 @@
       showChevron={true}
       {optionIdentifier}
       {labelIdentifier}
-      items={dataset.authority}
-      placeholder="Select an authority"
-      on:select={(event) => handleSelect(event, 'Authority')}
-      on:clear={() => handleClear('Authority')}
+      items={newDataset.types}
+      placeholder="Select a type"
+      on:select={(event) => handleSelect(event, 'Type')}
+      on:clear={() => handleClear('Type')}
     />
   </div>
 
@@ -289,10 +294,10 @@
       showChevron={true}
       {optionIdentifier}
       {labelIdentifier}
-      items={dataset.resourceTypes}
-      placeholder="Select a type"
-      on:select={(event) => handleSelect(event, 'ResourceType')}
-      on:clear={(event) => handleClear(event, 'ResourceType')}
+      items={newDataset.status}
+      placeholder="Select status"
+      on:select={(event) => handleSelect(event, 'Status')}
+      on:clear={(event) => handleClear(event, 'Status')}
     />
   </div>
 </div>

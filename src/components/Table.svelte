@@ -75,9 +75,9 @@
     // Sort by activity title
     if (column == 'recommendation') {
       return (filteredData = filteredData.sort((a, b) => {
-        if (a.activity.title < b.activity.title) {
+        if (a.recommendation.title < b.recommendation.title) {
           return -1 * sortModifier
-        } else if (a.activity.title > b.activity.title) {
+        } else if (a.recommendation.title > b.recommendation.title) {
           return 1 * sortModifier
         } else {
           return 0
@@ -96,6 +96,7 @@
   }
 
   onMount(() => {
+    console.log('in table: ', filteredData)
     const iconsActive = document.querySelectorAll('.sort-icon--active')
     iconsActive.forEach((icon) => {
       icon.classList.remove('sort-icon--active')
@@ -184,36 +185,42 @@
           >
             <td class="table__body__cell table__body__cell--data"
               ><div class="table__body__cell__title-container">
-                <span class="icon-container" />{rows.activity.title}
+                <span class="icon-container" />{rows.recommendation.title}
               </div></td
             >
             <td class="table__body__cell table__body__cell--data"
-              >{rows.state}</td
-            >
+              >{rows.technology}
+            </td>
             <td class="table__body__cell table__body__cell--data">
               <div class="table__body__cell__policy-goal-container">
-                {#each rows.policy_goals as policyGoal}
+                <!-- show the actors separated by comma -->
+                {#each rows.actors as actor}
                   <span
-                    class="table__body__cell__policy-goal table__body__cell__policy-goal--{policyGoal.toLowerCase()}"
-                    >{policyGoal.split('_').join(' ')}</span
+                    class="table__body__cell__policy-goal table__body__cell__policy-goal--{actor.toLowerCase()}"
+                    >{actor}</span
                   >
                 {/each}
               </div>
             </td>
             <td class="table__body__cell table__body__cell--data"
-              >{rows.authority}</td
+              >{rows.type}</td
             >
-            <td class="table__body__cell table__body__cell--data"
-              >{rows.type_of_resource}</td
-            >
+            <td class="table__body__cell table__body__cell--data">
+                <div class="table__body__cell__policy-goal-container">
+                  <span
+                    class="table__body__cell__policy-goal table__body__cell__policy-goal--{rows.status.toLowerCase()}"
+                    >{rows.status}</span
+                  >
+                </div>
+            </td>
           </tr>
           <tr class="extra-content hide">
             <td class="table__body__cell" colspan="6">
               <div class="extra-content__container">
-                <div class="description">{rows.activity.description}</div>
+                <div class="description">{rows.recommendation.description}</div>
                 <div class="link">
                   <a
-                    href={rows.activity.link}
+                    href={rows.recommendation.link}
                     target="_blank"
                     rel="noopener noreferrer"
                     >See Full Report<span class="icon-container"

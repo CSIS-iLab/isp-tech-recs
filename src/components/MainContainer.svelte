@@ -7,6 +7,9 @@
   import Footer from './Footer.svelte'
 
   export let dataset, contentDataset, newDataset
+  let selectedActor = ''
+  let selectedType = ''
+  let selectedStatus = ''
   let selectedState = ''
   let selectedResourceType = ''
   let selectedAuthority = ''
@@ -16,48 +19,55 @@
   $: row = { isOpen: false }
 
   $: filteredData = () => {
-    return dataset.data
-      .filter((row) => {
-        const filteredActivity = searchText ? searchText : row.activity.title
-        const filteredState = selectedState ? selectedState : row.state
-        const filteredResource = selectedResourceType
-          ? selectedResourceType
-          : row.type_of_resource
-        const filteredAuthority = selectedAuthority
-          ? selectedAuthority
-          : row.authority
-        const filteredTags =
-          selectedTags.length > 0
-            ? row.tags.some((tag) => selectedTags.includes(tag))
-            : row.tags
-        const filteredPolicyGoal = selectedPolicyGoal
-          ? row.policy_goals.some((policy) =>
-              selectedPolicyGoal.includes(policy)
-            )
-          : row.policy_goals
-
+    // return dataset.data
+    // console.log(selectedActor)
+    // console.log(newDataset.data)
+    return newDataset.data
+      .filter( row => {
+        const filteredRecommendation = searchText ? searchText : row.recommendation.title
+        // const filteredActor = selectedActor ? selectedActor : row.actors
+        // const filteredActivity = searchText ? searchText : row.activity.title
+        // const filteredState = selectedState ? selectedState : row.state
+        // const filteredResource = selectedResourceType
+          // ? selectedResourceType
+          // : row.type_of_resource
+        // const filteredAuthority = selectedAuthority
+        //   ? selectedAuthority
+        //   : row.authority
+        // const filteredTags =
+        //   selectedTags.length > 0
+        //     ? row.tags.some((tag) => selectedTags.includes(tag))
+        //     : row.tags
+        // const filteredPolicyGoal = selectedPolicyGoal
+        //   ? row.policy_goals.some((policy) =>
+        //       selectedPolicyGoal.includes(policy)
+        //     )
+        //   : row.policy_goals
+        // console.log(row)
         return (
-          (row.activity.title
+          (row.recommendation.title
             .toLowerCase()
-            .includes(filteredActivity.toLowerCase()) ||
-            row.state.toLowerCase().includes(filteredActivity.toLowerCase()) ||
-            row.type_of_resource
+            .includes(filteredRecommendation.toLowerCase()) ||
+            // row.actors.toLowerCase().includes(filteredRecommendation.toLowerCase()) ||
+            row.status
               .toLowerCase()
-              .includes(filteredActivity.toLowerCase()) ||
-            row.authority
+              .includes(filteredRecommendation.toLowerCase()) ||
+            row.type
               .toLowerCase()
-              .includes(filteredActivity.toLowerCase())) &&
-          row.state === filteredState &&
-          row.type_of_resource === filteredResource &&
-          row.authority === filteredAuthority &&
-          filteredPolicyGoal &&
-          filteredTags
+              .includes(filteredRecommendation.toLowerCase())) 
+              // .includes(filteredRecommendation.toLowerCase())) &&
+          // row.actors === selectedActor
+          // row.actor === selectedActor &&
+          // row.type_of_resource === filteredResource &&
+          // row.authority === filteredAuthority &&
+          // filteredPolicyGoal &&
+          // filteredTags
         )
       })
       .sort((a, b) => {
-        if (a.activity.title < b.activity.title) {
+        if (a.recommendation.title < b.recommendation.title) {
           return -1
-        } else if (a.activity.title > b.activity.title) {
+        } else if (a.recommendation.title > b.recommendation.title) {
           return 1
         } else {
           return 0
@@ -77,6 +87,7 @@
       {newDataset}
       filteredData={filteredData()}
       bind:row
+      bind:selectedActor
       bind:selectedAuthority
       bind:selectedResourceType
       bind:selectedState
