@@ -10,6 +10,7 @@
   export let selectedActor
   export let selectedType
   export let selectedTechnology
+  export let selectedStatus
   // export let selectedState
   export let selectedResourceType
   export let selectedAuthority
@@ -98,7 +99,7 @@
   }
 
   function handleSelect(event, selectName) {
-    // console.log(event, selectName);
+    console.log(event, selectName)
     if (row.isOpen) {
       row.isOpen = !row.isOpen
       removeRowActiveTitleStyle()
@@ -109,6 +110,8 @@
       selectedActor = event.detail.value
     } else if (selectName === 'Type') {
       selectedType = event.detail.value
+    } else if (selectName === 'Status') {
+      selectedStatus = event.detail.value
       // selectedAuthority = event.detail.value
     } else if (selectName === 'Technology') {
       updateActiveTab(event.target.value)
@@ -121,6 +124,7 @@
   }
 
   function handleClear(selectName) {
+    console.log(selectName);
     if (row.isOpen) {
       row.isOpen = !row.isOpen
       removeRowActiveTitleStyle()
@@ -129,10 +133,12 @@
     }
     if (selectName === 'Actor') {
       selectedActor = ''
-    } else if (selectName === 'Authority') {
-      selectedAuthority = ''
+    } else if (selectName === 'Type') {
+      selectedType = ''
+    } else if (selectName === 'Status') {
+      selectedStatus = ''
     } else {
-      selectedResourceType = ''
+      selectedTechnology = ''
     }
   }
 
@@ -297,7 +303,7 @@
       items={newDataset.status}
       placeholder="Select status"
       on:select={(event) => handleSelect(event, 'Status')}
-      on:clear={(event) => handleClear(event, 'Status')}
+      on:clear={() => handleClear('Status')}
     />
   </div>
 </div>

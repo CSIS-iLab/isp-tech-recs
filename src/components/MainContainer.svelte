@@ -10,6 +10,7 @@
   let selectedActor = ''
   let selectedType = ''
   let selectedStatus = ''
+  let selectedTechnology = ''
   let selectedState = ''
   let selectedResourceType = ''
   let selectedAuthority = ''
@@ -18,50 +19,32 @@
   let searchText
   $: row = { isOpen: false }
 
+  $: console.log(selectedActor)
+  $: console.log(selectedType)
+  $: console.log(selectedStatus)
   $: filteredData = () => {
-    // return dataset.data
-    // console.log(selectedActor)
-    // console.log(newDataset.data)
     return newDataset.data
       .filter( row => {
         const filteredRecommendation = searchText ? searchText : row.recommendation.title
-        // const filteredActor = selectedActor ? selectedActor : row.actors
-        // const filteredActivity = searchText ? searchText : row.activity.title
-        // const filteredState = selectedState ? selectedState : row.state
-        // const filteredResource = selectedResourceType
-          // ? selectedResourceType
-          // : row.type_of_resource
-        // const filteredAuthority = selectedAuthority
-        //   ? selectedAuthority
-        //   : row.authority
-        // const filteredTags =
-        //   selectedTags.length > 0
-        //     ? row.tags.some((tag) => selectedTags.includes(tag))
-        //     : row.tags
-        // const filteredPolicyGoal = selectedPolicyGoal
-        //   ? row.policy_goals.some((policy) =>
-        //       selectedPolicyGoal.includes(policy)
-        //     )
-        //   : row.policy_goals
-        // console.log(row)
+        const filteredActor = selectedActor ? row.actors.includes(selectedActor) : row.actors
+        const filteredType = selectedType ? selectedType : row.type
+        const filteredTechnology = selectedTechnology ? selectedTechnology : row.technology
+        const filteredStatus = selectedStatus ? selectedStatus : row.status
         return (
           (row.recommendation.title
             .toLowerCase()
             .includes(filteredRecommendation.toLowerCase()) ||
-            // row.actors.toLowerCase().includes(filteredRecommendation.toLowerCase()) ||
+            row.actors.includes(filteredRecommendation.toLowerCase()) ||
             row.status
               .toLowerCase()
               .includes(filteredRecommendation.toLowerCase()) ||
             row.type
               .toLowerCase()
-              .includes(filteredRecommendation.toLowerCase())) 
-              // .includes(filteredRecommendation.toLowerCase())) &&
-          // row.actors === selectedActor
-          // row.actor === selectedActor &&
-          // row.type_of_resource === filteredResource &&
-          // row.authority === filteredAuthority &&
-          // filteredPolicyGoal &&
-          // filteredTags
+              .includes(filteredRecommendation.toLowerCase())) &&
+          filteredActor &&
+          row.type === filteredType &&
+          row.technology === filteredTechnology &&
+          row.status === filteredStatus
         )
       })
       .sort((a, b) => {
@@ -88,11 +71,8 @@
       filteredData={filteredData()}
       bind:row
       bind:selectedActor
-      bind:selectedAuthority
-      bind:selectedResourceType
-      bind:selectedState
-      bind:selectedTags
-      bind:selectedPolicyGoal
+      bind:selectedType
+      bind:selectedStatus
       bind:searchText
     />
 
