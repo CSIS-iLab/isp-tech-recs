@@ -42,6 +42,8 @@
   const labelIdentifier = 'label'
 
   function updateActiveTab(val) {
+    // console.log(val)
+    // val = val.split(' ').join('_')
     const value = val ? val.split('_').join('-') : 'all'
     const spanCountActive = document.querySelector(`.options__count--active`)
     const spanCount = document.querySelector(
@@ -100,7 +102,7 @@
   }
 
   function handleSelect(event, selectName) {
-    console.log(event, selectName)
+    // console.log(event, selectName)
     if (row.isOpen) {
       row.isOpen = !row.isOpen
       removeRowActiveTitleStyle()
@@ -115,13 +117,14 @@
       selectedStatus = event.detail.value
       // selectedAuthority = event.detail.value
     } else if (selectName === 'Technology-Select') {
-      selectedTechnologySelect = event.detail.value
+      // selectedTechnologySelect = event.detail.value
+      selectedTechnology = event.detail.value
       // selectedPolicyGoal = event.target.value
       // console.log(selectedPolicyGoal)
     } else if (selectName === 'Technology') {
       updateActiveTab(event.target.value)
       selectedTechnology = event.target.value
-      console.log('technology is:', selectedTechnology);
+      // console.log('technology is:', selectedTechnology);
     } else {
       selectedResourceType = event.detail.value
     }
@@ -143,6 +146,7 @@
       selectedStatus = ''} 
     else if (selectName === 'Technology-Select') {
       selectedTechnologySelect = ''
+      selectedTechnology = ''
     } else {
       selectedTechnology = ''
     }

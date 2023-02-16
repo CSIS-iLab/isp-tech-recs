@@ -30,7 +30,7 @@ async function fetchData() {
       // console.log(row)
       return {
         id: index,
-        technology: row.technology,
+        technology: row.technology.split(' ').join('_'),
         recommendation: {
           title: row.title,
           description: row.description,
