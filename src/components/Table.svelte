@@ -96,7 +96,7 @@
   }
 
   onMount(() => {
-    console.log('in table: ', filteredData)
+    // console.log('in table: ', filteredData)
     const iconsActive = document.querySelectorAll('.sort-icon--active')
     iconsActive.forEach((icon) => {
       icon.classList.remove('sort-icon--active')

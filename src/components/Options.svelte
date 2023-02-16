@@ -10,6 +10,7 @@
   export let selectedActor
   export let selectedType
   export let selectedTechnology
+  export let selectedTechnologySelect
   export let selectedStatus
   // export let selectedState
   export let selectedResourceType
@@ -113,11 +114,14 @@
     } else if (selectName === 'Status') {
       selectedStatus = event.detail.value
       // selectedAuthority = event.detail.value
+    } else if (selectName === 'Technology-Select') {
+      selectedTechnologySelect = event.detail.value
+      // selectedPolicyGoal = event.target.value
+      // console.log(selectedPolicyGoal)
     } else if (selectName === 'Technology') {
       updateActiveTab(event.target.value)
       selectedTechnology = event.target.value
-      // selectedPolicyGoal = event.target.value
-      // console.log(selectedPolicyGoal)
+      console.log('technology is:', selectedTechnology);
     } else {
       selectedResourceType = event.detail.value
     }
@@ -136,7 +140,9 @@
     } else if (selectName === 'Type') {
       selectedType = ''
     } else if (selectName === 'Status') {
-      selectedStatus = ''
+      selectedStatus = ''} 
+    else if (selectName === 'Technology-Select') {
+      selectedTechnologySelect = ''
     } else {
       selectedTechnology = ''
     }
@@ -251,17 +257,16 @@
 <div class="selects">
   <div class="select-container select-technology">
     <!-- testing out the mobile view-->
-    <div class="label">Tecnologies</div>
+    <div class="label">Technologies</div>
     <Select
       indicatorSvg={chevron}
       showChevron={true}
-      bind:listOpen={isListOpen}
       {optionIdentifier}
-      labelIdentifier={'name'}
-      items={dataset.states}
+      {labelIdentifier}
+      items={newDataset.technologies}
       placeholder="Select a Technology"
-      on:select={(event) => handleSelect(event, 'Technology')}
-      on:clear={() => handleClear('Technology')}
+      on:select={(event) => handleSelect(event, 'Technology-Select')}
+      on:clear={() => handleClear('Technology-Select')}
     />
   </div>
 

@@ -18,18 +18,17 @@
   let selectedPolicyGoal = ''
   let searchText
   $: row = { isOpen: false }
-
-  $: console.log(selectedActor)
-  $: console.log(selectedType)
-  $: console.log(selectedStatus)
+  $: console.log(selectedTechnology)
   $: filteredData = () => {
     return newDataset.data
       .filter( row => {
+        // console.log(row.technology);
         const filteredRecommendation = searchText ? searchText : row.recommendation.title
         const filteredActor = selectedActor ? row.actors.includes(selectedActor) : row.actors
         const filteredType = selectedType ? selectedType : row.type
-        const filteredTechnology = selectedTechnology ? selectedTechnology : row.technology
         const filteredStatus = selectedStatus ? selectedStatus : row.status
+        const filteredTechnology = selectedTechnology ? selectedTechnology : row.technology
+        // const filteredPolicyGoal = selectedPolicyGoal ? row.policy_goals.some((policy) => selectedPolicyGoal.includes(policy)) : row.policy_goals
         return (
           (row.recommendation.title
             .toLowerCase()
@@ -38,13 +37,16 @@
             row.status
               .toLowerCase()
               .includes(filteredRecommendation.toLowerCase()) ||
+            row.technology.toLowerCase().includes(filteredRecommendation.toLowerCase()) ||
             row.type
               .toLowerCase()
-              .includes(filteredRecommendation.toLowerCase())) &&
-          filteredActor &&
+              .includes(filteredRecommendation.toLowerCase())
+          ) &&
           row.type === filteredType &&
           row.technology === filteredTechnology &&
-          row.status === filteredStatus
+          row.status === filteredStatus &&
+          // filteredTechnology &&
+          filteredActor
         )
       })
       .sort((a, b) => {
@@ -73,6 +75,7 @@
       bind:selectedActor
       bind:selectedType
       bind:selectedStatus
+      bind:selectedTechnology
       bind:searchText
     />
 
