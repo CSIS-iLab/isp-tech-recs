@@ -5,21 +5,24 @@
   import SelectMultiple from './SelectMultiple.svelte'
   import Icon from './Icons.svelte'
 
-  export let dataset
+  export let newDataset
   export let filteredData
-  export let selectedState
-  export let selectedResourceType
-  export let selectedAuthority
-  export let selectedTags
-  export let selectedPolicyGoal
+  export let selectedActor
+  export let selectedType
+  export let selectedTechnology
+  export let selectedTechnologySelect
+  export let selectedStatus
   export let searchText = ''
   export let row
 
   $: totalEntries = filteredData.length
 
-  const policyGoalsTotal = dataset.data.length
-  function getPGCount(policyGoal) {
-    return dataset.data.filter((row) => row.policy_goals.includes(policyGoal))
+  const technologiesTotal = newDataset.data.filter( row => row.length !== 0)
+  .length
+
+  function getTechnologyCount(technology) {
+    // console.log(newDataset)
+    return newDataset.data.filter( row => row.technology.includes(technology))
       .length
   }
 
@@ -27,6 +30,8 @@
   const labelIdentifier = 'label'
 
   function updateActiveTab(val) {
+    // console.log(val)
+    // val = val.split(' ').join('_')
     const value = val ? val.split('_').join('-') : 'all'
     const spanCountActive = document.querySelector(`.options__count--active`)
     const spanCount = document.querySelector(
@@ -85,19 +90,29 @@
   }
 
   function handleSelect(event, selectName) {
+    // console.log(event, selectName)
     if (row.isOpen) {
       row.isOpen = !row.isOpen
       removeRowActiveTitleStyle()
       removeExtraContentStyle()
       switchRowBottomLine()
     }
-    if (selectName === 'State') {
-      selectedState = event.detail.value
-    } else if (selectName === 'Authority') {
-      selectedAuthority = event.detail.value
-    } else if (selectName === 'Policy Goal') {
+    if (selectName === 'Actor') {
+      selectedActor = event.detail.value
+    } else if (selectName === 'Type') {
+      selectedType = event.detail.value
+    } else if (selectName === 'Status') {
+      selectedStatus = event.detail.value
+      // selectedAuthority = event.detail.value
+    } else if (selectName === 'Technology-Select') {
+      // selectedTechnologySelect = event.detail.value
+      selectedTechnology = event.detail.value
+      // selectedPolicyGoal = event.target.value
+      // console.log(selectedPolicyGoal)
+    } else if (selectName === 'Technology') {
       updateActiveTab(event.target.value)
-      selectedPolicyGoal = event.target.value
+      selectedTechnology = event.target.value
+      // console.log('technology is:', selectedTechnology);
     } else {
       selectedResourceType = event.detail.value
     }
@@ -110,12 +125,17 @@
       removeExtraContentStyle()
       switchRowBottomLine()
     }
-    if (selectName === 'State') {
-      selectedState = ''
-    } else if (selectName === 'Authority') {
-      selectedAuthority = ''
+    if (selectName === 'Actor') {
+      selectedActor = ''
+    } else if (selectName === 'Type') {
+      selectedType = ''
+    } else if (selectName === 'Status') {
+      selectedStatus = ''} 
+    else if (selectName === 'Technology-Select') {
+      selectedTechnologySelect = ''
+      selectedTechnology = ''
     } else {
-      selectedResourceType = ''
+      selectedTechnology = ''
     }
   }
 
@@ -192,7 +212,7 @@
 </script>
 
 <section class="table-container__header">
-  <h2 class="table-container__subtitle">Explore Policy Goals</h2>
+  <h2 class="table-container__subtitle">Explore Technology Policy Recommendations</h2>
 </section>
 
 <section class="options__container">
@@ -200,25 +220,26 @@
     <button
       class="options__btn options__btn--tab options__btn--tab--all options__btn--tab--active options__btn--tab--all--active"
       data-tab={'all'}
-      on:click={(event) => handleSelect(event, 'Policy Goal')}
+      on:click={(event) => handleSelect(event, 'Technology')}
       >All <span
         data-count={'all'}
-        class="options__count options__count--active">{policyGoalsTotal}</span
+        class="options__count options__count--active">{technologiesTotal}</span
       >
     </button>
-    {#each dataset.policyGoals as policy}
+    <!-- {#each dataset.policyGoals as policy} -->
+    {#each newDataset.technologies as technology}
       <button
-        class="options__btn options__btn--tab options__btn--tab--{policy
+        class="options__btn options__btn--tab options__btn--tab--{technology
           .split('_')
           .join('-')} "
-        data-tab={policy.split('_').join('-')}
-        value={policy}
-        on:click={(event) => handleSelect(event, 'Policy Goal')}
-        >{policy.split('_').join(' ')}
+        data-tab={technology.split('_').join('-')}
+        value={technology}
+        on:click={(event) => handleSelect(event, 'Technology')}
+        >{technology.split('_').join(' ')}
         <span
-          data-count={policy.split('_').join('-')}
-          class="options__count options__count--{policy.split('_').join('-')}"
-          >{getPGCount(policy)}</span
+          data-count={technology.split('_').join('-')}
+          class="options__count options__count--{technology.split('_').join('-')}"
+          >{getTechnologyCount(technology)}</span
         >
       </button>
     {/each}
@@ -227,69 +248,58 @@
 <div class="selects">
   <div class="select-container select-technology">
     <!-- testing out the mobile view-->
-    <div class="label">Tecnologies</div>
+    <div class="label">Technologies</div>
     <Select
       indicatorSvg={chevron}
       showChevron={true}
-      bind:listOpen={isListOpen}
       {optionIdentifier}
-      labelIdentifier={'name'}
-      items={dataset.states}
+      {labelIdentifier}
+      items={newDataset.technologies}
       placeholder="Select a Technology"
-      on:select={(event) => handleSelect(event, 'State')}
-      on:clear={() => handleClear('State')}
+      on:select={(event) => handleSelect(event, 'Technology-Select')}
+      on:clear={() => handleClear('Technology-Select')}
     />
   </div>
 
   <div class="select-container">
-    <div class="label">State</div>
-    <Select
-      indicatorSvg={chevron}
-      showChevron={true}
-      bind:listOpen={isListOpen}
-      {optionIdentifier}
-      labelIdentifier={'name'}
-      items={dataset.states}
-      placeholder="Select a state"
-      on:select={(event) => handleSelect(event, 'State')}
-      on:clear={() => handleClear('State')}
-    />
-  </div>
-
-  <div class="select-container">
-    <div class="label">Authority</div>
+    <div class="label">Actor</div>
     <Select
       indicatorSvg={chevron}
       showChevron={true}
       {optionIdentifier}
       {labelIdentifier}
-      items={dataset.authority}
-      placeholder="Select an authority"
-      on:select={(event) => handleSelect(event, 'Authority')}
-      on:clear={() => handleClear('Authority')}
+      items={newDataset.actors}
+      placeholder="Select an actor"
+      on:select={(event) => handleSelect(event, 'Actor')}
+      on:clear={() => handleClear('Actor')}
     />
   </div>
 
   <div class="select-container">
-    <div class="label">Resource Type</div>
+    <div class="label">Recommendation Type</div>
     <Select
       indicatorSvg={chevron}
       showChevron={true}
       {optionIdentifier}
       {labelIdentifier}
-      items={dataset.resourceTypes}
+      items={newDataset.types}
       placeholder="Select a type"
-      on:select={(event) => handleSelect(event, 'ResourceType')}
-      on:clear={(event) => handleClear(event, 'ResourceType')}
+      on:select={(event) => handleSelect(event, 'Type')}
+      on:clear={() => handleClear('Type')}
     />
   </div>
 
   <div class="select-container">
-    <div class="label">Tags</div>
-    <SelectMultiple
-      bind:selectedValue={selectedTags}
-      options={dataset.tags}
-      selectName="tags"
+    <div class="label">Recommendation Status</div>
+    <Select
+      indicatorSvg={chevron}
+      showChevron={true}
+      {optionIdentifier}
+      {labelIdentifier}
+      items={newDataset.status}
+      placeholder="Select status"
+      on:select={(event) => handleSelect(event, 'Status')}
+      on:clear={() => handleClear('Status')}
     />
   </div>
 </div>

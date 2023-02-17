@@ -1,7 +1,8 @@
 <script>
   import Icon from './Icons.svelte'
+  import ReportBlock from './ReportBlock.svelte';
 
-  export let filteredData
+  export let filteredData, contentDataset
   let authorities = []
   let tags = []
   const totalEntries = filteredData.length
@@ -46,89 +47,30 @@
     return topThree
   }
 
-  const topTags = getTopTags()
-  const mostReferencedAuhorities = getMostReferencedAuthorities()
+  // const topTags = getTopTags()
+  // const mostReferencedAuhorities = getMostReferencedAuthorities()
 </script>
 
 <div class="wrapper">
   <main class="container intro-content">
-    <p class="intro-content__overline--small">
-      Technology Policy Initiative
-    </p>
-    <p class="intro-content__overline--regular">
-      by the International Security Program
-    </p>
-    <h1 class="intro-content__title">Technology Policy Recommendations</h1>
-    <p class="intro-content__introduction">
-      A curated database of technology policy recommendations created by the <a
-        class="intro-content__link"
-        href="https://www.csis.org/programs/energy-security-and-climate-change-program/projects/clean-resilient-states-initiative"
-        target="_blank"
-        rel="noreferrer">CSIS International Security Program</a
-      >.
-    </p>
-    <p class="intro-content__more">
-      <a class="intro-content__link intro-content__link--more" href="#about"
-        ><span class="intro-content__more__icon-container">
-          <Icon class="icon__info" name="Icon-info" />
-        </span><span>More on this database</span></a
-      >
-    </p>
+    {#if contentDataset }
+      <p class="intro-content__overline--small">
+          {contentDataset.overline_small}
+      </p>
+      <p class="intro-content__overline--regular">
+        {contentDataset.overline_regular}
+      </p>
+      <h1 class="intro-content__title">
+        {contentDataset.intro_content.title}
+      </h1>
+      <p class="intro-content__introduction">
+        {contentDataset.intro_content.introduction}
+      </p>
+      <ReportBlock reportBlockContent = { contentDataset.report_block} />
+    {:else}
+      <p>No content found.</p>
+    {/if}
   </main>
-  <div class="container">
-    <div class="intro-content__graphs ">
-      <div class="intro-bar">
-        <div class="intro-bar__title">Most Referenced Authorities</div>
-        <div class="intro-bar__content">
-          <div class="intro-bar__column--labels">
-            <!-- iterate and add the most refereced authorities -->
-            {#each mostReferencedAuhorities as authority}
-              <div><span>{Object.keys(authority)}</span></div>
-            {/each}
-          </div>
-          <div
-            class="intro-bar__column--bars"
-            data-total-entries={totalEntries}
-          >
-            <!-- iterate and add the most refereced authorities values -->
-            {#each mostReferencedAuhorities as authority}
-              <div class="bar">
-                <span
-                  style="width: {(Object.values(authority) / totalEntries) *
-                    100}%"
-                />{Object.values(authority)}
-              </div>
-            {/each}
-          </div>
-        </div>
-      </div>
-
-      <div class="intro-bar">
-        <div class="intro-bar__title">Top Tags</div>
-        <div class="intro-bar__content">
-          <div class="intro-bar__column--labels">
-            <!-- iterate and add the top tags -->
-            {#each topTags as tag}
-              <div><span>{Object.keys(tag)}</span></div>
-            {/each}
-          </div>
-          <div
-            class="intro-bar__column--bars"
-            data-total-entries={totalEntries}
-          >
-            <!-- iterate and add the top tags values -->
-            {#each topTags as tag}
-              <div class="bar">
-                <span
-                  style="width:  {(Object.values(tag) / totalEntries) * 100}%"
-                />{Object.values(tag)}
-              </div>
-            {/each}
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 
 <style lang="scss">

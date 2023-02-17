@@ -2,10 +2,25 @@
 
 .btn {
   padding: 6px 8px;
+  display: inline-block;
 
   &:hover {
     color: $color-text-gray-400;
     background-color: #F0F0F0;
+  }
+
+  &--outline {
+    padding: rem(8) rem(16);
+    padding-bottom: rem(16);
+    @extend %text-style-ui-2;
+    @include font-size(16px);
+    font-weight: 400;
+    text-align: center;
+    border: 2px solid $color-primary-dark;
+    border-radius: 1px;
+    transition: color 0.3s ease-in-out, background 0.3s ease-in-out;
+    color: $color-primary-dark;
+    background: transparent;
   }
 
   &--scroll {

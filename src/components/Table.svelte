@@ -9,7 +9,8 @@
   let sortIconContainer
   $: sortClass = 'inactive'
 
-  const sortByColumns = ['activity', 'state', 'authority', 'type of resource']
+  // const sortByColumns = ['activity', 'state', 'authority', 'type of resource']
+  const sortByColumns = ['recommendation', 'technology', 'recommendation type']
 
   function handleClick(e) {
     let title = undefined
@@ -36,18 +37,18 @@
   }
 
   const headerNames = [
-    'Activity',
-    'State',
-    'Policy Goals',
-    'Authority',
-    'Type of Resource',
-    'Tags'
+    'Recommendation',
+    'Technology',
+    'Actor',
+    'Recommendation Type',
+    'Recommendation Status'
   ]
 
-  $: sortBy = { col: 'activity', ascending: true }
+  $: sortBy = { col: 'recommendation', ascending: true }
 
   $: sort = (e, column) => {
     column = column.toLowerCase().replace(/\s/g, '_') // replace spaces using regex with undesrscore
+    column = column === 'recommendation_type' ? 'type' : column // add this to sort by recommendation type
     const iconsActive = document.querySelectorAll('.sort-icon--active')
     iconsActive.forEach((icon) => {
       icon.classList.remove('sort-icon--active')
@@ -61,15 +62,15 @@
       sortBy.ascending = true
     }
 
-    // Modifier to sorting function for ascending or descending
+    // Modifier to sort by ascending or descending
     let sortModifier = sortBy.ascending ? 1 : -1
 
     // Sort by activity title
-    if (column == 'activity') {
+    if (column == 'recommendation') {
       return (filteredData = filteredData.sort((a, b) => {
-        if (a.activity.title < b.activity.title) {
+        if (a.recommendation.title < b.recommendation.title) {
           return -1 * sortModifier
-        } else if (a.activity.title > b.activity.title) {
+        } else if (a.recommendation.title > b.recommendation.title) {
           return 1 * sortModifier
         } else {
           return 0
@@ -88,6 +89,7 @@
   }
 
   onMount(() => {
+    // console.log('in table: ', filteredData)
     const iconsActive = document.querySelectorAll('.sort-icon--active')
     iconsActive.forEach((icon) => {
       icon.classList.remove('sort-icon--active')
@@ -95,7 +97,9 @@
     const divActivity = document.querySelector(
       '.table__cell--header__container__activity'
     )
-    divActivity.children[1].children[1].classList.add('sort-icon--active')
+    if (divActivity) {
+      divActivity.children[1].children[1].classList.add('sort-icon--active')
+    }
     // Sync horizontal scroll of table header and table body
     // Inspired by https://codepen.io/Goweb/pen/rgrjWx
     const scrollSync = () => {
@@ -146,14 +150,16 @@
                         name.toLowerCase().split(' ').join('_') &&
                       sortBy.ascending
                         ? 'inactive'
-                        : 'active'}">▲</button
+                        : 'active'}"
+                      >▲</button
                     >
                     <button
                       class="sort-icon sort-icon--{sortBy.col ==
                         name.toLowerCase().split(' ').join('_') &&
                       sortBy.ascending
                         ? 'active'
-                        : 'inactive'}">▼</button
+                        : 'inactive'}"
+                      >▼</button
                     >
                   </div>
                 {/if}
@@ -174,52 +180,43 @@
           >
             <td class="table__body__cell table__body__cell--data"
               ><div class="table__body__cell__title-container">
-                <span class="icon-container" />{rows.activity.title}
+                <span class="icon-container" />{rows.recommendation.title}
               </div></td
             >
-            <td class="table__body__cell table__body__cell--data"
-              >{rows.state}</td
-            >
+            <td class="table__body__cell table__body__cell--data table__body__cell--bold"
+              >{rows.technology.split('_').join(' ')}
+            </td>
             <td class="table__body__cell table__body__cell--data">
               <div class="table__body__cell__policy-goal-container">
-                {#each rows.policy_goals as policyGoal}
-                  <span
-                    class="table__body__cell__policy-goal table__body__cell__policy-goal--{policyGoal.toLowerCase()}"
-                    >{policyGoal.split('_').join(' ')}</span
-                  >
-                {/each}
+                <span
+                class="table__body__cell__policy-goal table__body__cell__policy-goal"
+                >
+                {rows.actors.join(', ')}                    
+                </span>
               </div>
             </td>
             <td class="table__body__cell table__body__cell--data"
-              >{rows.authority}</td
+              >{rows.type}</td
             >
-            <td class="table__body__cell table__body__cell--data"
-              >{rows.type_of_resource}</td
-            >
-            <td
-              class="table__body__cell table__body__cell--data table__body__cell__icon-container"
-            >
-              {#each rows.tags as tag}
-                <span
-                  class="icon-tag-container"
-                  use:tooltip={{ theme: 'energy' }}
-                  aria-hidden="true"
-                  aria-label={tag}
-                  ><Icon name="icon {tag}" class="icon__tags" /></span
-                >
-              {/each}
+            <td class="table__body__cell table__body__cell--data">
+                <div class="table__body__cell__policy-goal-container">
+                  <span
+                    class="table__body__cell__policy-goal table__body__cell__policy-goal--{rows.status.toLowerCase().split(' ').join('-')}"
+                    >{rows.status}</span
+                  >
+                </div>
             </td>
           </tr>
           <tr class="extra-content hide">
             <td class="table__body__cell" colspan="6">
               <div class="extra-content__container">
-                <div class="description">{rows.activity.description}</div>
+                <div class="description">{rows.recommendation.description}</div>
                 <div class="link">
                   <a
-                    href={rows.activity.link}
+                    href={rows.recommendation.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    >Go to resource<span class="icon-container"
+                    >See Full Report<span class="icon-container"
                       ><Icon name="Icon-open-blank" class="icon" /></span
                     ></a
                   >

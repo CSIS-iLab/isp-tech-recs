@@ -1,0 +1,50 @@
+@use "../abstracts/" as *;
+
+.report-block {
+  position: relative;
+  display: grid;
+  grid-template-areas:
+    'img'
+    'title'
+    'description';
+  margin-right: auto;
+  margin-left: auto;
+  // display: flex;
+  // flex-direction: column;
+  // column-gap: rem(64);
+  // padding-bottom: rem(64);
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: rem(32);
+    max-width: rem(533);
+
+    &--title {
+      // font-weight: 700;
+      @extend %text-style-heading-4;
+      text-align: left;
+      // @include font-size(24px);
+    }
+    
+    &--description {
+      font-weight: 400;
+      @extend %text-style-paragraph-1;
+      text-align: left;
+    }
+  }
+
+  &__img {
+    display: flex;
+    align-self: stretch;
+    width: rem(302);
+  }
+
+  @include breakpoint('medium') {
+    display: flex;
+    flex-direction: row;
+    column-gap: rem(64);
+    padding-bottom: rem(64);
+  }
+}
