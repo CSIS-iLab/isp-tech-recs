@@ -1,9 +1,18 @@
 @use "../abstracts/" as *;
 
 .report-block {
-  display: flex;
-  column-gap: rem(64);
-  padding-bottom: rem(64);
+  position: relative;
+  display: grid;
+  grid-template-areas:
+    'img'
+    'title'
+    'description';
+  margin-right: auto;
+  margin-left: auto;
+  // display: flex;
+  // flex-direction: column;
+  // column-gap: rem(64);
+  // padding-bottom: rem(64);
 
   &__text {
     display: flex;
@@ -30,5 +39,12 @@
     display: flex;
     align-self: stretch;
     width: rem(302);
+  }
+
+  @include breakpoint('medium') {
+    display: flex;
+    flex-direction: row;
+    column-gap: rem(64);
+    padding-bottom: rem(64);
   }
 }
