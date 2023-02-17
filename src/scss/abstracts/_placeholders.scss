@@ -74,8 +74,6 @@
 %text-style-ui-2 {
   @extend %text-style-ui-1;
 	@include font-size(16px);
-  // font-family: $font-family-default;
-	// line-height:1.2;
 }
 
 %text-style-ui-2-bold {
@@ -86,7 +84,6 @@
 %text-style-ui-3 {
   @extend %text-style-ui-2;
 	@include font-size(15px);
-	// line-height:120%;
 }
 
 %text-style-ui-3-italic {
@@ -117,6 +114,11 @@
   @extend %text-style-ui-4;
 	@include font-size (13px);
   line-height: 1;
+}
+
+%text-style-ui-5-bold {
+  @extend %text-style-ui-5;
+  font-weight: $font-weight-bold;
 }
 
 %text-style-ui-5-caps {

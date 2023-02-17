@@ -5,18 +5,13 @@
   import SelectMultiple from './SelectMultiple.svelte'
   import Icon from './Icons.svelte'
 
-  export let dataset, newDataset
+  export let newDataset
   export let filteredData
   export let selectedActor
   export let selectedType
   export let selectedTechnology
   export let selectedTechnologySelect
   export let selectedStatus
-  // export let selectedState
-  export let selectedResourceType
-  export let selectedAuthority
-  // export let selectedTags
-  // export let selectedPolicyGoal
   export let searchText = ''
   export let row
 
@@ -24,13 +19,6 @@
 
   const technologiesTotal = newDataset.data.filter( row => row.length !== 0)
   .length
-  // $: console.log(newDataset.actors)
-
-  const policyGoalsTotal = dataset.data.length
-  function getPGCount(policyGoal) {
-    return dataset.data.filter((row) => row.policy_goals.includes(policyGoal))
-      .length
-  }
 
   function getTechnologyCount(technology) {
     // console.log(newDataset)
@@ -131,7 +119,6 @@
   }
 
   function handleClear(selectName) {
-    console.log(selectName);
     if (row.isOpen) {
       row.isOpen = !row.isOpen
       removeRowActiveTitleStyle()

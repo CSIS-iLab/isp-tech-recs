@@ -43,19 +43,12 @@
     'Recommendation Type',
     'Recommendation Status'
   ]
-  // const headerNames = [
-  //   'Activity',
-  //   'State',
-  //   'Policy Goals',
-  //   'Authority',
-  //   'Type of Resource',
-  //   'Tags'
-  // ]
 
   $: sortBy = { col: 'recommendation', ascending: true }
 
   $: sort = (e, column) => {
     column = column.toLowerCase().replace(/\s/g, '_') // replace spaces using regex with undesrscore
+    column = column === 'recommendation_type' ? 'type' : column // add this to sort by recommendation type
     const iconsActive = document.querySelectorAll('.sort-icon--active')
     iconsActive.forEach((icon) => {
       icon.classList.remove('sort-icon--active')
@@ -69,7 +62,7 @@
       sortBy.ascending = true
     }
 
-    // Modifier to sorting function for ascending or descending
+    // Modifier to sort by ascending or descending
     let sortModifier = sortBy.ascending ? 1 : -1
 
     // Sort by activity title
@@ -157,14 +150,16 @@
                         name.toLowerCase().split(' ').join('_') &&
                       sortBy.ascending
                         ? 'inactive'
-                        : 'active'}">▲</button
+                        : 'active'}"
+                      >▲</button
                     >
                     <button
                       class="sort-icon sort-icon--{sortBy.col ==
                         name.toLowerCase().split(' ').join('_') &&
                       sortBy.ascending
                         ? 'active'
-                        : 'inactive'}">▼</button
+                        : 'inactive'}"
+                      >▼</button
                     >
                   </div>
                 {/if}
@@ -188,18 +183,16 @@
                 <span class="icon-container" />{rows.recommendation.title}
               </div></td
             >
-            <td class="table__body__cell table__body__cell--data"
-              >{rows.technology}
+            <td class="table__body__cell table__body__cell--data table__body__cell--bold"
+              >{rows.technology.split('_').join(' ')}
             </td>
             <td class="table__body__cell table__body__cell--data">
               <div class="table__body__cell__policy-goal-container">
-                <!-- show the actors separated by comma -->
-                {#each rows.actors as actor}
-                  <span
-                    class="table__body__cell__policy-goal table__body__cell__policy-goal--{actor.toLowerCase()}"
-                    >{actor}</span
-                  >
-                {/each}
+                <span
+                class="table__body__cell__policy-goal table__body__cell__policy-goal"
+                >
+                {rows.actors.join(', ')}                    
+                </span>
               </div>
             </td>
             <td class="table__body__cell table__body__cell--data"
@@ -208,7 +201,7 @@
             <td class="table__body__cell table__body__cell--data">
                 <div class="table__body__cell__policy-goal-container">
                   <span
-                    class="table__body__cell__policy-goal table__body__cell__policy-goal--{rows.status.toLowerCase()}"
+                    class="table__body__cell__policy-goal table__body__cell__policy-goal--{rows.status.toLowerCase().split(' ').join('-')}"
                     >{rows.status}</span
                   >
                 </div>
