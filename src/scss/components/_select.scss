@@ -23,7 +23,7 @@
 
   @include breakpoint('medium') {
     display: grid;
-    grid-template-columns: repeat(4, calc(25% - 2rem));
+    grid-template-columns: repeat(3, calc(35% - 2rem));
     gap: rem(40);
     padding-top: rem(48);
     padding-bottom: rem(56);

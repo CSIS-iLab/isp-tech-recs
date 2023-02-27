@@ -7,16 +7,10 @@
     <h2 class="about__subtitle">About</h2>
     <div class="about__description">
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        The CSIS International Security Program (ISP) is a constant source of reliable analysis on the
+        international security and defense landscape. Our resident experts come to CSIS with extensive
+        backgrounds from the Department of Defense, National Security Council, Department of State,
+        U.S. intelligence community, defense industry, and academia.
       </p>
     </div>
     <div class="about__reports">
@@ -59,7 +53,7 @@
         </li>
       </ul>
     </div>
-    <div class="about__initiative">
+    <!-- <div class="about__initiative">
       <p>
         The <a
           class="about__initiative__link"
@@ -72,7 +66,7 @@
         quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
       </p>
-    </div>
+    </div> -->
     <div class="about__development">
       <h3 class="about__development__title">Development Team</h3>
       <p class="about__development__description">

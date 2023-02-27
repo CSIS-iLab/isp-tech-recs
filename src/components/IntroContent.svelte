@@ -54,9 +54,9 @@
 <div class="wrapper">
   <main class="container intro-content">
     {#if contentDataset }
-      <p class="intro-content__overline--small">
+      <!-- <p class="intro-content__overline--small">
           {contentDataset.overline_small}
-      </p>
+      </p> -->
       <p class="intro-content__overline--regular">
         {contentDataset.overline_regular}
       </p>
@@ -66,7 +66,13 @@
       <p class="intro-content__introduction">
         {contentDataset.intro_content.introduction}
       </p>
-      <ReportBlock reportBlockContent = { contentDataset.report_block} />
+      <p class="intro-content__more">
+        {contentDataset.intro_content.more}
+      </p>
+      <p class="intro-content__extra">
+        {contentDataset.intro_content.extra}
+      </p>
+      <!-- <ReportBlock reportBlockContent = { contentDataset.report_block} /> -->
     {:else}
       <p>No content found.</p>
     {/if}

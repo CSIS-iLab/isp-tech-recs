@@ -24,6 +24,8 @@ function formatContentData( data ) {
       intro_content: {
         title: row[2],
         introduction: row[3],
+        more: row[4],
+        extra: row[5]
       },
       report_block: {
         title: row[5],
