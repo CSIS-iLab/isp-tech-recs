@@ -48,7 +48,25 @@ main {
 		max-width: $size__content-max-width;
 		text-align: center;
 		@extend %text-style-paragraph-1;
+
 	}
+  
+  &__more {
+		margin: 0 auto;
+    // padding-bottom: rem(56);
+		max-width: $size__content-max-width;
+		text-align: center;
+		@extend %text-style-paragraph-1;
+  }
+
+  &__extra {
+		margin: 0 auto;
+    margin-top: rem(32);
+    padding-bottom: rem(56);
+		max-width: $size__content-max-width;
+		text-align: center;
+		@extend %text-style-paragraph-1;
+  }
 
 	&__more {
 
