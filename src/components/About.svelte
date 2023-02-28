@@ -12,6 +12,9 @@
         backgrounds from the Department of Defense, National Security Council, Department of State,
         U.S. intelligence community, defense industry, and academia.
       </p>
+      <p>
+        This website is made possible by support from Amazon Web Services.
+      </p>
     </div>
     <div class="about__reports">
       <p class="about__reports__title">Associated Reports</p>
