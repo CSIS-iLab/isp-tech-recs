@@ -53,7 +53,7 @@
 </script>
 
 <div id="site-content">
-  <Header />
+  <Header {socialMediaDataset}/>
 
   <IntroContent filteredData={filteredData()} {contentDataset} />
 
@@ -72,7 +72,7 @@
     <Table filteredData={filteredData()} bind:row />
   </section>
   <About {reportsDataset}/>
-  <Footer />
+  <Footer {socialMediaDataset}/>
 </div>
 
 <style lang="scss">
