@@ -1,5 +1,6 @@
 <script>
   import SocialShare from './SocialShare.svelte'
+  export let socialMediaDataset
 </script>
 
 <header class="header">
@@ -12,7 +13,7 @@
     >
       <span class="header__logo" />
     </a>
-    <SocialShare />
+    <SocialShare {socialMediaDataset}/>
   </div>
 </header>
 

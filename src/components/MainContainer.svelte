@@ -53,7 +53,7 @@
 </script>
 
 <div id="site-content">
-  <Header />
+  <Header {socialMediaDataset}/>
 
   <IntroContent filteredData={filteredData()} {contentDataset} />
 

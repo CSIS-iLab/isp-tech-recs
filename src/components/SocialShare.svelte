@@ -1,11 +1,16 @@
 <script>
   import Icon from './Icons.svelte'
 
+  export let socialMediaDataset
+
   function copyURL(e) {
     e.preventDefault()
     const url = window.location.href
     //Use the clipboard's writeText method to pass the inputs text to the clipboard
     navigator.clipboard.writeText(url).then((res) => {})
+  }
+  function getEmail(array) {
+    return array.find(element => element.platform === 'email').link
   }
 </script>
 
@@ -47,7 +52,7 @@
   </li>
   <li class="share__item">
     <a
-      href="mailto:energy@csis.org?subject=State Energy | CSIS Energy Security and Climate Change Program"
+      href="mailto:{getEmail(socialMediaDataset.socialMedia)}?subject=Tech Recs"
       class="share__link"
       aria-label="Share via email"
     >

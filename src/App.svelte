@@ -25,7 +25,7 @@
     const resReports = await getReports()
     reportsDataset = resReports
 
-    if (reportsDataset) {
+    if (socialMediaDataset) {
       // console.log(newDataset)
       // console.log(socialMediaDataset)
       // console.log(reportsDataset)
@@ -36,7 +36,9 @@
 
 {#if contentDataset.dataFormatted && contentDataset.dataFormatted.length > 0 &&
   newDataset.technologies && newDataset.technologies.length > 0 &&
-  reportsDataset.reports && reportsDataset.reports.length > 0
+  reportsDataset.reports && reportsDataset.reports.length > 0 &&
+  socialMediaDataset.socialMedia && socialMediaDataset.socialMedia.length > 0
+
 
 }
   <MainContainer contentDataset = {contentDataset.dataFormatted[0]} {newDataset} {socialMediaDataset} {reportsDataset}/>
