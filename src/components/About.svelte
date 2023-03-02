@@ -1,5 +1,7 @@
 <script>
   import Icon from './Icons.svelte'
+
+  export let reportsDataset
 </script>
 
 <section class="about" id="about">
@@ -19,41 +21,20 @@
     <div class="about__reports">
       <p class="about__reports__title">Associated Reports</p>
       <ul>
+        {#each reportsDataset.reports as report}
         <li>
           <a
             class="about__reports__link"
-            href="https://www.csis.org/"
+            href="{report.link}"
             target="_blank"
             rel="noreferrer"
-            >Report Title<span
+            >{report.title}<span
               class="icon-container"
               ><Icon class="icon__report" name="Icon-open-blank" /></span
             ></a
           >
-        </li>
-        <li>
-          <a
-            class="about__reports__link"
-            href="https://www.csis.org/"
-            target="_blank"
-            rel="noreferrer"
-            >Report 2<span
-              class="icon-container"
-              ><Icon class="icon__report" name="Icon-open-blank" /></span
-            ></a
-          >
-        </li>
-        <li>
-          <a
-            class="about__reports__link"
-            href="https://www.csis.org/"
-            target="_blank"
-            rel="noreferrer"
-            >Report 3<span class="icon-container"
-              ><Icon class="icon__report" name="Icon-open-blank" /></span
-            ></a
-          >
-        </li>
+        {/each}
+
       </ul>
     </div>
     <!-- <div class="about__initiative">
