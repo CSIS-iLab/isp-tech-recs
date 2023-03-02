@@ -14,9 +14,9 @@ const dataset = {}
 const actors = ["Congress","ODNI","CIA","NSA","NGA","NRO","DOD"]
 
 export default async function getNewData() {
-  console.log(await fetchData())
+  // console.log(await fetchData())
   const response = await fetch(dataURL)
-  const data = await response.json()
+  // const data = await response.json()
   const dataset = await fetchData()
   // dataset = formatDataset( data.values )
   // return dataset
