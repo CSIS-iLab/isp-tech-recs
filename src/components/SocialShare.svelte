@@ -23,7 +23,7 @@
       aria-label="Share on Facebook"
       rel="noreferrer"
     >
-      <Icon class="icon__share" name="Icon-Facebook" />
+      <Icon class="icon__share" name="Icon-facebook" />
     </a>
   </li>
   <li class="share__item">

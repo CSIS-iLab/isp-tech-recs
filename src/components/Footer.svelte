@@ -1,6 +1,8 @@
 <script>
   import SocialMediaShare from '../components/SocialMediaShare.svelte'
   const currentYear = new Date().getFullYear()
+
+  export let socialMediaDataset
 </script>
 
 <footer class="footer">
@@ -30,7 +32,7 @@
     </p>
   </div>
   <div class="footer__social">
-    <SocialMediaShare />
+    <SocialMediaShare {socialMediaDataset} />
   </div>
   <div class="footer__contact">
     <address class="footer__address">

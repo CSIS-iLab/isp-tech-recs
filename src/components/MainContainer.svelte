@@ -72,7 +72,7 @@
     <Table filteredData={filteredData()} bind:row />
   </section>
   <About {reportsDataset}/>
-  <Footer />
+  <Footer {socialMediaDataset}/>
 </div>
 
 <style lang="scss">

@@ -1,63 +1,24 @@
 <script>
   import Icon from './Icons.svelte'
+
+  export let socialMediaDataset
+  const socialMedia = socialMediaDataset.socialMedia.filter( social => social.platform != 'email')
 </script>
 
 <ul class="social">
-  <li class="social__item">
-    <a
-      href="https://www.facebook.com/CSIS.org"
-      class="social__link"
-      target="_blank"
-      aria-label="Visit the CSIS Facebook page"
-      rel="noreferrer"
-    >
-      <Icon class="icon__social" name="Icon-Facebook" />
-    </a>
-  </li>
-  <li class="social__item">
-    <a
-      href="https://twitter.com/CSISEnergy"
-      class="social__link"
-      target="_blank"
-      aria-label="Visit the Energy program Twitter page"
-      rel="noreferrer"
-    >
-      <Icon class="icon__social" name="Icon-twitter" />
-    </a>
-  </li>
-  <li class="social__item">
-    <a
-      href="https://www.linkedin.com/company/csis/"
-      class="social__link"
-      target="_blank"
-      aria-label="Visit the CSIS LinkedIn page"
-      rel="noreferrer"
-    >
-      <Icon class="icon__social" name="Icon-linkedin" />
-    </a>
-  </li>
-  <li class="social__item">
-    <a
-      href="https://www.instagram.com/csis/"
-      class="social__link"
-      target="_blank"
-      aria-label="Visit the CSIS Instagram page"
-      rel="noreferrer"
-    >
-      <Icon class="icon__social" name="Icon-instagram" />
-    </a>
-  </li>
-  <li class="social__item">
-    <a
-      href="https://www.youtube.com/channel/UCr5jq6MC_VCe1c5ciIZtk_w"
-      class="social__link"
-      target="_blank"
-      aria-label="Visit the CSIS Youtube page"
-      rel="noreferrer"
-    >
-      <Icon class="icon__social" name="Icon-youtube" />
-    </a>
-  </li>
+  {#each socialMedia as social}
+    <li class="social__item">
+      <a
+        href="{social.link}"
+        class="social__link"
+        target="_blank"
+        aria-label="Visit the ISP {social.platform} page"
+        rel="noreferrer"
+      >
+        <Icon class="icon__social" name="Icon-{social.platform.toLowerCase()}" />
+      </a>
+    </li>
+  {/each}
 </ul>
 
 <style lang="scss">
