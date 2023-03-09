@@ -2,7 +2,6 @@
   import { onMount } from 'svelte'
   import Search from './Search.svelte'
   import Select from 'svelte-select'
-  import SelectMultiple from './SelectMultiple.svelte'
   import Icon from './Icons.svelte'
 
   export let newDataset
@@ -10,7 +9,7 @@
   export let selectedActor
   export let selectedType
   export let selectedTechnology
-  export let selectedTechnologySelect
+  // export let selectedTechnologySelect
   export let selectedStatus
   export let searchText = ''
   export let row
