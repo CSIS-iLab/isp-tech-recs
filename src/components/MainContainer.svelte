@@ -6,7 +6,7 @@
   import About from './About.svelte'
   import Footer from './Footer.svelte'
 
-  export let contentDataset, newDataset, socialMediaDataset, reportsDataset
+  export let contentDataset, newDataset, socialMediaDataset, reportsDataset, about
   let selectedActor = ''
   let selectedType = ''
   let selectedStatus = ''
@@ -71,7 +71,7 @@
 
     <Table filteredData={filteredData()} bind:row />
   </section>
-  <About {reportsDataset}/>
+  <About {reportsDataset} {about}/>
   <Footer {socialMediaDataset}/>
 </div>
 

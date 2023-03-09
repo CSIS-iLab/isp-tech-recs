@@ -3,21 +3,18 @@
   import DevelopmentTeam from './DevelopmentTeam.svelte'
   import AssociatedReports from './AssociatedReports.svelte'
 
-  export let reportsDataset
+  export let reportsDataset, about
 </script>
 
 <section class="about" id="about">
   <div class="about__container">
     <h2 class="about__subtitle">About</h2>
     <div class="about__description">
-      <p>
-        The CSIS International Security Program (ISP) is a constant source of reliable analysis on the
-        international security and defense landscape. Our resident experts come to CSIS with extensive
-        backgrounds from the Department of Defense, National Security Council, Department of State,
-        U.S. intelligence community, defense industry, and academia.
+      <p id="description">
+        {about.description}
       </p>
-      <p>
-        This website is made possible by support from Amazon Web Services.
+      <p id="acknowledgement">
+        {about.acknowledgement}
       </p>
     </div>
 
