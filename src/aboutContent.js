@@ -3,13 +3,11 @@ const googleSpreadsheetKey = '18X7CU49YzbIa-KWJJR1Xz-mmINOdix9tGh7eMjXoXvM'
 const googleSpreadsheetContent = 'about'
 
 const url = `https://content-sheets.googleapis.com/v4/spreadsheets/${googleSpreadsheetKey}/values/${googleSpreadsheetContent}?key=${googleAPIKey}&majorDimension=ROWS`
-let content = {}
 
 export default async function getAboutContent() {
   const response = await fetch( url )
   const data = await response.json()
-  content = formatContentData( data.values )
-  return content
+  return formatContentData(data.values)
 }
 
 function formatContentData( data ) {

@@ -55,7 +55,7 @@
 <div id="site-content">
   <Header {socialMediaDataset}/>
 
-  <IntroContent filteredData={filteredData()} {contentDataset} />
+  <IntroContent {contentDataset} />
 
   <section class="table-container">
     <Options
