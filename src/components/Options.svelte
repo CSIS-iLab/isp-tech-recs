@@ -9,7 +9,6 @@
   export let selectedActor
   export let selectedType
   export let selectedTechnology
-  // export let selectedTechnologySelect
   export let selectedStatus
   export let searchText = ''
   export let row
@@ -20,7 +19,6 @@
   .length
 
   function getTechnologyCount(technology) {
-    // console.log(newDataset)
     return newDataset.data.filter( row => row.technology.includes(technology))
       .length
   }
@@ -29,8 +27,6 @@
   const labelIdentifier = 'label'
 
   function updateActiveTab(val) {
-    // console.log(val)
-    // val = val.split(' ').join('_')
     const value = val ? val.split('_').join('-') : 'all'
     const spanCountActive = document.querySelector(`.options__count--active`)
     const spanCount = document.querySelector(
@@ -89,7 +85,6 @@
   }
 
   function handleSelect(event, selectName) {
-    // console.log(event, selectName)
     if (row.isOpen) {
       row.isOpen = !row.isOpen
       removeRowActiveTitleStyle()
@@ -102,16 +97,11 @@
       selectedType = event.detail.value
     } else if (selectName === 'Status') {
       selectedStatus = event.detail.value
-      // selectedAuthority = event.detail.value
     } else if (selectName === 'Technology-Select') {
-      // selectedTechnologySelect = event.detail.value
       selectedTechnology = event.detail.value
-      // selectedPolicyGoal = event.target.value
-      // console.log(selectedPolicyGoal)
     } else if (selectName === 'Technology') {
       updateActiveTab(event.target.value)
       selectedTechnology = event.target.value
-      // console.log('technology is:', selectedTechnology);
     } else {
       selectedResourceType = event.detail.value
     }
@@ -131,7 +121,6 @@
     } else if (selectName === 'Status') {
       selectedStatus = ''} 
     else if (selectName === 'Technology-Select') {
-      selectedTechnologySelect = ''
       selectedTechnology = ''
     } else {
       selectedTechnology = ''
@@ -246,7 +235,6 @@
 </section>
 <div class="selects">
   <div class="select-container select-technology">
-    <!-- testing out the mobile view-->
     <div class="label">Technologies</div>
     <Select
       indicatorSvg={chevron}

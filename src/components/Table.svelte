@@ -1,15 +1,12 @@
 <script>
   import { onMount } from 'svelte'
-  import tooltip from '../js/tooltip'
   import Icon from './Icons.svelte'
 
   export let filteredData
   export let row
 
-  let sortIconContainer
   $: sortClass = 'inactive'
 
-  // const sortByColumns = ['activity', 'state', 'authority', 'type of resource']
   const sortByColumns = ['recommendation', 'technology', 'recommendation type']
 
   function handleClick(e) {
@@ -89,7 +86,6 @@
   }
 
   onMount(() => {
-    // console.log('in table: ', filteredData)
     const iconsActive = document.querySelectorAll('.sort-icon--active')
     iconsActive.forEach((icon) => {
       icon.classList.remove('sort-icon--active')
@@ -174,56 +170,58 @@
     <table class="table table__body">
       <tbody>
         {#each filteredData as rows}
-          <tr
-            on:click={(e) => handleClick(e)}
-            class="title table__body__cell--border"
-          >
-            <td class="table__body__cell table__body__cell--data"
-              ><div class="table__body__cell__title-container">
-                <span class="icon-container" />{rows.recommendation.title}
-              </div></td
+          {#if rows.recommendation.title}
+            <tr
+              on:click={(e) => handleClick(e)}
+              class="title table__body__cell--border"
             >
-            <td class="table__body__cell table__body__cell--data table__body__cell--bold"
-              >{rows.technology.split('_').join(' ')}
-            </td>
-            <td class="table__body__cell table__body__cell--data">
-              <div class="table__body__cell__policy-goal-container">
-                <span
-                class="table__body__cell__policy-goal table__body__cell__policy-goal"
-                >
-                {rows.actors.join(', ')}                    
-                </span>
-              </div>
-            </td>
-            <td class="table__body__cell table__body__cell--data"
-              >{rows.type}</td
-            >
-            <td class="table__body__cell table__body__cell--data">
+              <td class="table__body__cell table__body__cell--data"
+                ><div class="table__body__cell__title-container">
+                  <span class="icon-container" />{rows.recommendation.title}
+                </div></td
+              >
+              <td class="table__body__cell table__body__cell--data table__body__cell--bold"
+                >{rows.technology.split('_').join(' ')}
+              </td>
+              <td class="table__body__cell table__body__cell--data">
                 <div class="table__body__cell__policy-goal-container">
                   <span
-                    class="table__body__cell__policy-goal table__body__cell__policy-goal--{rows.status.toLowerCase().split(' ').join('-')}"
-                    >{rows.status}</span
+                  class="table__body__cell__policy-goal table__body__cell__policy-goal"
                   >
+                  {rows.actors.join(', ')}                    
+                  </span>
                 </div>
-            </td>
-          </tr>
-          <tr class="extra-content hide">
-            <td class="table__body__cell" colspan="6">
-              <div class="extra-content__container">
-                <div class="description">{rows.recommendation.description}</div>
-                <div class="link">
-                  <a
-                    href={rows.recommendation.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    >See Full Report<span class="icon-container"
-                      ><Icon name="Icon-open-blank" class="icon" /></span
-                    ></a
-                  >
+              </td>
+              <td class="table__body__cell table__body__cell--data"
+                >{rows.type}</td
+              >
+              <td class="table__body__cell table__body__cell--data">
+                  <div class="table__body__cell__policy-goal-container">
+                    <span
+                      class="table__body__cell__policy-goal table__body__cell__policy-goal--{rows.status.toLowerCase().split(' ').join('-')}"
+                      >{rows.status}</span
+                    >
+                  </div>
+              </td>
+            </tr>
+            <tr class="extra-content hide">
+              <td class="table__body__cell" colspan="6">
+                <div class="extra-content__container">
+                  <div class="description">{rows.recommendation.description}</div>
+                  <div class="link">
+                    <a
+                      href={rows.recommendation.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >See Full Report<span class="icon-container"
+                        ><Icon name="Icon-open-blank" class="icon" /></span
+                      ></a
+                    >
+                  </div>
                 </div>
-              </div>
-            </td>
-          </tr>
+              </td>
+            </tr>
+          {/if}
         {:else}
           <tr>
             <td class="table__body__cell table__body__cell--no-data" colspan="6"

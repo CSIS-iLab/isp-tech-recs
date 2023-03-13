@@ -7,7 +7,6 @@
   import getAboutContent from './aboutContent'
   import MainContainer from './components/MainContainer.svelte'
 
-  // let dataset = {}
   let contentDataset = {}
   let newDataset = {}
   let socialMediaDataset = {}
@@ -29,14 +28,6 @@
 
     const resAbout = await getAboutContent()
     aboutDataset = resAbout
-
-    if (socialMediaDataset) {
-      // console.log(newDataset)
-      // console.log(socialMediaDataset)
-      // console.log(reportsDataset)
-      // console.log(aboutDataset)
-    }
-
   })
 </script>
 
