@@ -70,8 +70,14 @@ $color-policy-goals-economic-development-fill: rgba(234,246,249,1);
 $color-primary-dark: rgba(0, 72, 122, 1);
 
 /*----------  Fonts  ----------*/
-$font__synthese: synthese, sans-serif;
+$font__obvia: "obvia", sans-serif;
+$font-title: $font__obvia;
+// $font-weight: 400;
+$font-weight-med-bold: 550;
+$font-style: normal;
 
+
+$font__synthese: synthese, sans-serif;
 $font-family-default: $font__synthese;
 $font-size-default: 16px;
 $font-weight-default: 400;

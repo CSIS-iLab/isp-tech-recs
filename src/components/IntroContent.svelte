@@ -11,15 +11,18 @@
       <!-- <p class="intro-content__overline--small">
           {contentDataset.overline_small}
       </p> -->
-      <p class="intro-content__overline--regular">
-        {contentDataset.overline_regular}
-      </p>
-      <h1 class="intro-content__title">
-        {contentDataset.intro_content.title}
-      </h1>
-      <p class="intro-content__introduction">
-        {contentDataset.intro_content.introduction}
-      </p>
+      <div class="intro-content__background">
+        <img src="./assets/static/header-bg.jpg" alt="Header background">
+        <p class="intro-content__overline--regular">
+          {contentDataset.overline_regular}
+        </p>
+        <h1 class="intro-content__title">
+          {contentDataset.intro_content.title}
+        </h1>
+        <p class="intro-content__introduction">
+          {contentDataset.intro_content.introduction}
+        </p>
+      </div>
       <p class="intro-content__more">
         {contentDataset.intro_content.more}
       </p>
