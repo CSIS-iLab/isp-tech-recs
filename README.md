@@ -1,4 +1,9 @@
-# repo-name Database | CSIS
+# Tech Recs Database | CSIS | International Security Program
+
+A curated database of technology policy recommendations created by the CSIS International Security Program. 
+
+### Production link
+[Tech Recs](https://techrecs.csis.org)
 
 ### Quick Start Instructions
 This repo uses `node v16.9.1 (npm v8.4.1)`
@@ -6,8 +11,8 @@ Data coming from `https://docs.google.com/spreadsheets/d/e/update-id-here/pub?ou
 Clone & Install the dependencies...
 
 ```bash
-git clone git@github.com:CSIS-iLab/database-table-template.git
-cd repo-name-database
+git clone git@github.com:CSIS-iLab/isp-tech-recs.git
+cd isp-tech-recs
 npm install
 ```
 
@@ -56,4 +61,4 @@ Write clear and concise commit messages describing the changes you are making an
 This project uses the [BEM](http://getbem.com/introduction/) naming convention.
 
 ### Copyright / License
-Copyright © 2022 CSIS iDeas Lab under the [License](LICENSE).
+Copyright © 2023 CSIS iDeas Lab under the [License](LICENSE).
