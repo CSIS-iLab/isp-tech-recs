@@ -14,7 +14,6 @@ main {
   }
 
 	&__overline {
-		// TODO: find better names for these modifiers
 		&--small {
 			@extend %text-style-ui-5-caps;
 			color: $color-text-white;
@@ -66,7 +65,7 @@ main {
 	&__introduction {
 		margin: 0 auto;
 		margin-bottom: rem(111);
-		max-width: $size__content-max-width;
+		max-width: rem(518);
 		text-align: center;
     color: $color-text-white;
 		@extend %text-style-paragraph-1;
@@ -75,7 +74,6 @@ main {
   
   &__more {
 		margin: 0 auto;
-    // padding-bottom: rem(56);
 		max-width: $size__content-max-width;
 		text-align: center;
 		@extend %text-style-paragraph-1;

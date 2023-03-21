@@ -80,7 +80,6 @@ $color-icon-focus: rgba(152, 152, 152, 0.68);
 /*----------  Fonts  ----------*/
 $font__obvia: "obvia", sans-serif;
 $font-title: $font__obvia;
-// $font-weight: 400;
 $font-weight-med-bold: 550;
 $font-style: normal;
 
@@ -101,7 +100,6 @@ $breakpoints: (
 );
 
 // Used to calculate font size in font-clamp mixin.
-// TODO: check these values with Lindsay. where exactly they came from?
 $container-min-width: 30rem; 
 $container-max-width: 87.5rem;
 $container-width-diff: 57.5rem; // Difference in rems between small & large breakpoints
