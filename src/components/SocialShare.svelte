@@ -10,7 +10,7 @@
     navigator.clipboard.writeText(url).then((res) => {})
   }
   function getEmail(array) {
-    return array.find(element => element.platform === 'email').link
+    return array.find((element) => element.platform === 'email').link
   }
 </script>
 

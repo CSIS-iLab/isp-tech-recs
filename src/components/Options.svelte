@@ -15,11 +15,12 @@
 
   $: totalEntries = filteredData.length
 
-  const technologiesTotal = newDataset.data.filter( row => row.length !== 0)
-  .length
+  const technologiesTotal = newDataset.data.filter(
+    (row) => row.length !== 0
+  ).length
 
   function getTechnologyCount(technology) {
-    return newDataset.data.filter( row => row.technology.includes(technology))
+    return newDataset.data.filter((row) => row.technology.includes(technology))
       .length
   }
 
@@ -119,8 +120,8 @@
     } else if (selectName === 'Type') {
       selectedType = ''
     } else if (selectName === 'Status') {
-      selectedStatus = ''} 
-    else if (selectName === 'Technology-Select') {
+      selectedStatus = ''
+    } else if (selectName === 'Technology-Select') {
       selectedTechnology = ''
     } else {
       selectedTechnology = ''
@@ -200,7 +201,9 @@
 </script>
 
 <section class="table-container__header">
-  <h2 class="table-container__subtitle">Explore Technology Policy Recommendations</h2>
+  <h2 class="table-container__subtitle">
+    Explore Technology Policy Recommendations
+  </h2>
 </section>
 
 <section class="options__container">
@@ -214,7 +217,6 @@
         class="options__count options__count--active">{technologiesTotal}</span
       >
     </button>
-    <!-- {#each dataset.policyGoals as policy} -->
     {#each newDataset.technologies as technology}
       <button
         class="options__btn options__btn--tab options__btn--tab--{technology
@@ -226,8 +228,9 @@
         >{technology.split('_').join(' ')}
         <span
           data-count={technology.split('_').join('-')}
-          class="options__count options__count--{technology.split('_').join('-')}"
-          >{getTechnologyCount(technology)}</span
+          class="options__count options__count--{technology
+            .split('_')
+            .join('-')}">{getTechnologyCount(technology)}</span
         >
       </button>
     {/each}

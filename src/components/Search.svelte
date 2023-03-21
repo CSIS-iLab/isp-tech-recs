@@ -48,5 +48,5 @@
 </div>
 
 <style lang="scss">
-  @use '../scss/components/search'
+  @use '../scss/components/search';
 </style>

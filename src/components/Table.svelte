@@ -7,7 +7,7 @@
 
   $: sortClass = 'inactive'
 
-  const sortByColumns = ['recommendation', 'technology', 'recommendation type']
+  const sortByColumns = ['recommendation', 'technology', 'type']
 
   function handleClick(e) {
     let title = undefined
@@ -37,15 +37,15 @@
     'Recommendation',
     'Technology',
     'Actor',
-    'Recommendation Type',
-    'Recommendation Status'
+    'Type',
+    'Status'
   ]
 
   $: sortBy = { col: 'recommendation', ascending: true }
 
   $: sort = (e, column) => {
     column = column.toLowerCase().replace(/\s/g, '_') // replace spaces using regex with undesrscore
-    column = column === 'recommendation_type' ? 'type' : column // add this to sort by recommendation type
+    column = column === 'type' ? 'type' : column // add this to sort by recommendation type
     const iconsActive = document.querySelectorAll('.sort-icon--active')
     iconsActive.forEach((icon) => {
       icon.classList.remove('sort-icon--active')
@@ -146,16 +146,14 @@
                         name.toLowerCase().split(' ').join('_') &&
                       sortBy.ascending
                         ? 'inactive'
-                        : 'active'}"
-                      >▲</button
+                        : 'active'}">▲</button
                     >
                     <button
                       class="sort-icon sort-icon--{sortBy.col ==
                         name.toLowerCase().split(' ').join('_') &&
                       sortBy.ascending
                         ? 'active'
-                        : 'inactive'}"
-                      >▼</button
+                        : 'inactive'}">▼</button
                     >
                   </div>
                 {/if}
@@ -180,15 +178,16 @@
                   <span class="icon-container" />{rows.recommendation.title}
                 </div></td
               >
-              <td class="table__body__cell table__body__cell--data table__body__cell--bold"
+              <td
+                class="table__body__cell table__body__cell--data table__body__cell--bold"
                 >{rows.technology.split('_').join(' ')}
               </td>
               <td class="table__body__cell table__body__cell--data">
                 <div class="table__body__cell__policy-goal-container">
                   <span
-                  class="table__body__cell__policy-goal table__body__cell__policy-goal"
+                    class="table__body__cell__policy-goal table__body__cell__policy-goal"
                   >
-                  {rows.actors.join(', ')}                    
+                    {rows.actors.join(', ')}
                   </span>
                 </div>
               </td>
@@ -196,18 +195,22 @@
                 >{rows.type}</td
               >
               <td class="table__body__cell table__body__cell--data">
-                  <div class="table__body__cell__policy-goal-container">
-                    <span
-                      class="table__body__cell__policy-goal table__body__cell__policy-goal--{rows.status.toLowerCase().split(' ').join('-')}"
-                      >{rows.status}</span
-                    >
-                  </div>
+                <div class="table__body__cell__policy-goal-container">
+                  <span
+                    class="table__body__cell__policy-goal table__body__cell__policy-goal--{rows.status
+                      .toLowerCase()
+                      .split(' ')
+                      .join('-')}">{rows.status}</span
+                  >
+                </div>
               </td>
             </tr>
             <tr class="extra-content hide">
               <td class="table__body__cell" colspan="6">
                 <div class="extra-content__container">
-                  <div class="description">{rows.recommendation.description}</div>
+                  <div class="description">
+                    {rows.recommendation.description}
+                  </div>
                   <div class="link">
                     <a
                       href={rows.recommendation.link}
@@ -240,20 +243,4 @@
 <style lang="scss">
   @use '../scss/abstracts/' as *;
   @use '../scss/components/table';
-  :global(.tippy-box[data-theme~='energy']) {
-    @extend %text-style-ui-4;
-    color: $color-text-gray-500;
-    background-color: $color-background-white;
-    padding: rem(6) rem(6) rem(8) rem(6);
-    filter: drop-shadow(0px 1px 9px rgba(0, 0, 0, 0.06))
-      drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1));
-  }
-
-  :global(.tippy-box[data-theme~='energy'][data-placement^='top']
-      > .tippy-arrow::before, .tippy-box[data-theme~='energy'][data-placement^='bottom']
-      > .tippy-arrow::before, .tippy-box[data-theme~='energy'][data-placement^='left']
-      > .tippy-arrow::before, .tippy-box[data-theme~='energy'][data-placement^='right']
-      > .tippy-arrow::before) {
-    border-top-color: $color-background-white;
-  }
 </style>

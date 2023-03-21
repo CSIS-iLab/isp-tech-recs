@@ -12,5 +12,5 @@
 </button>
 
 <style lang="scss">
-  @use '../scss/components/button'
+  @use '../scss/components/button';
 </style>
