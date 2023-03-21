@@ -2,13 +2,15 @@
 
 .footer {
   @extend %text-style-paragraph-2;
-  color: $color-text-gray-400;
+  // color: $color-text-gray-400;
+  color: $color-text-white;
   padding-top: rem(48);
   padding-bottom: rem(32);
   padding-right: var(--container-padding);
   padding-left: var(--container-padding);
   // font-weight: 300;
-  background-color: $color-background-gray-100;
+  // background-color: $color-background-gray-100;
+  background-color: $color-footer-bg;
   border-top: 1px solid $color-text-gray-100;
 
   display: grid;
@@ -46,7 +48,8 @@
     transition: color 0.3s ease-in-out;
 
     &:hover {
-      color: $color-brand-blue-600;
+      // color: $color-brand-blue-600;
+      color: $color-text-white;
       text-decoration: none;
     }
   }
@@ -60,11 +63,13 @@
     margin-bottom: rem(24);
 
     a {
-      color: $color-text-gray-300;
+      // color: $color-text-gray-300;
+      color: $color-text-white;
       transition: color 0.3s ease-in-out;
     
       &:hover {
-        color: $color-text-gray-500;
+        // color: $color-text-gray-500;
+        color: $color-icon-link-hover;
         text-decoration: none;
       }
 
@@ -88,7 +93,7 @@
 
   &__address {
     grid-area: address;
-    color: $color-text-gray-300;
+    // color: $color-text-gray-300;
     margin-top: rem(11);
     font-style: normal;
 
@@ -113,7 +118,8 @@
 
   &__copyright {
     grid-area: copyright;
-    color: $color-text-gray-200;
+    // color: $color-text-gray-200;
+    color: $color-text-copyright;
     @extend %text-style-ui-4;
     margin-top: rem(32);
 
@@ -124,7 +130,12 @@
 
   &__privacy-pol {
     @extend %text-style-ui-4-underline;
-    color: $color-text-gray-300;
+    color: $color-text-copyright;
+
+    &:hover {
+      // text-decoration: ;
+      color: $color-text-white;
+    }
 
     &:focus {
       text-decoration: none;

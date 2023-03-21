@@ -1,6 +1,14 @@
 @use 'variables' as *;
 @use 'mixins' as *;
 
+
+%text-style-title {
+	@include font-clamp(36px, 53px);
+	font-family: $font-title;
+  font-weight: $font-weight-med-bold;
+  line-height: 1;
+}
+
 %text-style-heading-1 {
 	@include font-clamp(36px, 53px);
 	font-family: $font-family-default;
