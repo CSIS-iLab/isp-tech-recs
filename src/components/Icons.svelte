@@ -8,5 +8,5 @@
 </svg>
 
 <style lang="scss">
-  @use '../scss/components/icon.scss'
+  @use '../scss/components/icon.scss';
 </style>

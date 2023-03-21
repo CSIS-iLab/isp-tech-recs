@@ -6,7 +6,11 @@
   import About from './About.svelte'
   import Footer from './Footer.svelte'
 
-  export let contentDataset, newDataset, socialMediaDataset, reportsDataset, about
+  export let contentDataset,
+    newDataset,
+    socialMediaDataset,
+    reportsDataset,
+    about
   let selectedActor = ''
   let selectedType = ''
   let selectedStatus = ''
@@ -15,12 +19,18 @@
   $: row = { isOpen: false }
   $: filteredData = () => {
     return newDataset.data
-      .filter( row => {
-        const filteredRecommendation = searchText ? searchText : row.recommendation.title
-        const filteredActor = selectedActor ? row.actors.includes(selectedActor) : row.actors
+      .filter((row) => {
+        const filteredRecommendation = searchText
+          ? searchText
+          : row.recommendation.title
+        const filteredActor = selectedActor
+          ? row.actors.includes(selectedActor)
+          : row.actors
         const filteredType = selectedType ? selectedType : row.type
         const filteredStatus = selectedStatus ? selectedStatus : row.status
-        const filteredTechnology = selectedTechnology ? selectedTechnology : row.technology
+        const filteredTechnology = selectedTechnology
+          ? selectedTechnology
+          : row.technology
         return (
           (row.recommendation.title
             .toLowerCase()
@@ -29,11 +39,12 @@
             row.status
               .toLowerCase()
               .includes(filteredRecommendation.toLowerCase()) ||
-            row.technology.toLowerCase().includes(filteredRecommendation.toLowerCase()) ||
+            row.technology
+              .toLowerCase()
+              .includes(filteredRecommendation.toLowerCase()) ||
             row.type
               .toLowerCase()
-              .includes(filteredRecommendation.toLowerCase())
-          ) &&
+              .includes(filteredRecommendation.toLowerCase())) &&
           row.type === filteredType &&
           row.technology === filteredTechnology &&
           row.status === filteredStatus &&
@@ -53,7 +64,7 @@
 </script>
 
 <div id="site-content">
-  <Header {socialMediaDataset}/>
+  <Header {socialMediaDataset} />
 
   <IntroContent {contentDataset} />
 
@@ -71,10 +82,10 @@
 
     <Table filteredData={filteredData()} bind:row />
   </section>
-  <About {reportsDataset} {about}/>
-  <Footer {socialMediaDataset}/>
+  <About {reportsDataset} {about} />
+  <Footer {socialMediaDataset} />
 </div>
 
 <style lang="scss">
-  @use '../scss/components/table-container'
+  @use '../scss/components/table-container';
 </style>

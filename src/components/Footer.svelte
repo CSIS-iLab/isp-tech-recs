@@ -7,8 +7,12 @@
 
 <footer class="footer">
   <div class="footer__logo">
-    <a href="https://www.csis.org" alt="CSIS website" target="_blank" rel="noreferrer">
-      <!-- <Logo /> -->
+    <a
+      href="https://www.csis.org"
+      alt="CSIS website"
+      target="_blank"
+      rel="noreferrer"
+    >
       <svg
         width="280"
         height="39"
@@ -55,5 +59,5 @@
 </footer>
 
 <style lang="scss">
-  @use '../scss/layout/footer'
+  @use '../scss/layout/footer';
 </style>

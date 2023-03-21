@@ -1,5 +1,3 @@
-// import * as d3Fetch from 'd3-fetch'
-
 const googleAPIKey = 'AIzaSyBXuQRRw4K4W8E4eGHoSFUSrK-ZwpD4Zz4'
 const googleSpreadsheetKey = '18X7CU49YzbIa-KWJJR1Xz-mmINOdix9tGh7eMjXoXvM'
 const googleSpreadsheetContent = 'content'
@@ -7,14 +5,14 @@ const googleSpreadsheetContent = 'content'
 const contentURL = `https://content-sheets.googleapis.com/v4/spreadsheets/${googleSpreadsheetKey}/values/${googleSpreadsheetContent}?key=${googleAPIKey}&majorDimension=ROWS`
 
 export default async function getContent() {
-  const response = await fetch( contentURL )
+  const response = await fetch(contentURL)
   const data = await response.json()
-  return formatContentData( data.values )
+  return formatContentData(data.values)
 }
 
-function formatContentData( data ) {
+function formatContentData(data) {
   const columnNames = data.shift()
-  const dataFormatted = data.map( ( row, index ) => {
+  const dataFormatted = data.map((row, index) => {
     return {
       id: index,
       overline_small: row[0],

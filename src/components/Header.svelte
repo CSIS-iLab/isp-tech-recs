@@ -13,10 +13,10 @@
     >
       <span class="header__logo" />
     </a>
-    <SocialShare {socialMediaDataset}/>
+    <SocialShare {socialMediaDataset} />
   </div>
 </header>
 
 <style lang="scss">
-  @use '../scss/layout/header'
+  @use '../scss/layout/header';
 </style>

@@ -5,14 +5,14 @@ const googleSpreadsheetContent = 'about'
 const url = `https://content-sheets.googleapis.com/v4/spreadsheets/${googleSpreadsheetKey}/values/${googleSpreadsheetContent}?key=${googleAPIKey}&majorDimension=ROWS`
 
 export default async function getAboutContent() {
-  const response = await fetch( url )
+  const response = await fetch(url)
   const data = await response.json()
   return formatContentData(data.values)
 }
 
-function formatContentData( data ) {
+function formatContentData(data) {
   const columnNames = data.shift()
-  const dataFormatted = data.map( ( row, index ) => {
+  const dataFormatted = data.map((row, index) => {
     return {
       id: index,
       description: row[0],

@@ -1,5 +1,5 @@
 <script>
-  import Icon from "./Icons.svelte"
+  import Icon from './Icons.svelte'
 
   export let reportsDataset
 </script>
@@ -21,6 +21,7 @@
       </li>{/each}
   </ul>
 </div>
+
 <style lang="scss">
   @use '../scss/components/associated-reports';
 </style>

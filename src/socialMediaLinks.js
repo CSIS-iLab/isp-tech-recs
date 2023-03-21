@@ -5,14 +5,14 @@ const googleSpreadsheetContent = 'social-media-links'
 const contentURL = `https://content-sheets.googleapis.com/v4/spreadsheets/${googleSpreadsheetKey}/values/${googleSpreadsheetContent}?key=${googleAPIKey}&majorDimension=ROWS`
 
 export default async function getSocialMedia() {
-  const response = await fetch( contentURL )
+  const response = await fetch(contentURL)
   const data = await response.json()
-  return formatContentData( data.values )
+  return formatContentData(data.values)
 }
 
-function formatContentData( data ) {
+function formatContentData(data) {
   const columnNames = data.shift()
-  const dataFormatted = data.map( ( row, index ) => {
+  const dataFormatted = data.map((row, index) => {
     return {
       id: index,
       platform: row[0],
