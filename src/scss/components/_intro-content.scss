@@ -5,21 +5,25 @@ main {
 }
 
 .intro-content {
-	padding-top: rem(132);
+	padding-top: rem(59);
 	max-width: $size__intro-content-wide-max-width;
 	text-align: center;
+
+  &--extra {
+	  padding-top: rem(56);
+  }
 
 	&__overline {
 		// TODO: find better names for these modifiers
 		&--small {
 			@extend %text-style-ui-5-caps;
-			color: $color-text-gray-400;
+			color: $color-text-white;
 			margin-bottom: rem(4);
 		}
 
 		&--regular {
 			@extend %text-style-ui-4-caps;
-			color: $color-text-gray-300;
+			color: $color-text-white;
 
 			&::after {
 				content: "";
@@ -33,22 +37,36 @@ main {
 		}
 	}
 
+  &__background {
+    // background: url(assets/images/beyond_parallel_header_bar.jpg);
+    background: url(/assets/static/header-bg.jpg);
+    background-size: auto;
+    background-size: cover;
+    width: 100%;
+    height: rem(350);
+    z-index: 3;
+    position: relative;
+    margin-top: rem(62.2);
+    // padding: 2.5em 0 0;
+  }
+
 	&__title {
 		margin-top: rem(12);
 		margin-bottom: rem(48);
 
-		@extend %text-style-heading-1;
-		color: $color-text-gray-500;
+		@extend %text-style-title;
+		color: $color-text-white;
 		text-align: center;
 	}
 
 	&__introduction {
 		margin: 0 auto;
-		margin-bottom: rem(56);
+		margin-bottom: rem(111);
 		max-width: $size__content-max-width;
 		text-align: center;
+    color: $color-text-white;
 		@extend %text-style-paragraph-1;
-
+    @include font-size(14px);
 	}
   
   &__more {
@@ -57,6 +75,8 @@ main {
 		max-width: $size__content-max-width;
 		text-align: center;
 		@extend %text-style-paragraph-1;
+    @include font-size(20px);
+    font-weight: $font-weight-bold;
   }
 
   &__extra {

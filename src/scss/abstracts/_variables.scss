@@ -78,8 +78,14 @@ $color-icon-focus: rgba(152, 152, 152, 0.68);
 
 
 /*----------  Fonts  ----------*/
-$font__synthese: synthese, sans-serif;
+$font__obvia: "obvia", sans-serif;
+$font-title: $font__obvia;
+// $font-weight: 400;
+$font-weight-med-bold: 550;
+$font-style: normal;
 
+
+$font__synthese: synthese, sans-serif;
 $font-family-default: $font__synthese;
 $font-size-default: 16px;
 $font-weight-default: 400;
