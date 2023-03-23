@@ -10,7 +10,7 @@
     Strategic and International Studies.
   </p>
   <p class="development__description">
-    Produced by Christina Hamm, Tucker Harris, Serven Maraghi, José Romero.
+    Produced by Christina Hamm, William Taylor & José Romero.
   </p>
 </div>
 
