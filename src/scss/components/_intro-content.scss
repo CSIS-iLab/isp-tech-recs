@@ -45,10 +45,10 @@ main {
     height: rem(350);
     z-index: 3;
     position: relative;
-    margin-top: rem(50);
+    margin-top: rem(49);
     
     @include breakpoint('medium') {
-      margin-top: rem(62.2);
+      margin-top: rem(61);
     }
 
   }
