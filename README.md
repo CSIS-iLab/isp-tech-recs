@@ -6,7 +6,8 @@ A curated database of technology policy recommendations created by the CSIS Inte
 [Tech Recs](https://techrecs.csis.org)
 
 ### Quick Start Instructions
-This repo uses `node v22.10.0 (npm v10.9.0)` and `svelte 5`
+This repo uses `node v22.11.0 (npm v10.9.0)` and `svelte 5`
+
 Data coming from `https://docs.google.com/spreadsheets/d/e/update-id-here/pub?output=csv`
 Clone & Install the dependencies...
 
