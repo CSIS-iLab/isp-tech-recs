@@ -1,47 +1,49 @@
 <script>
-  import svelteLogo from './assets/svelte.svg'
-  import viteLogo from '/vite.svg'
-  import Counter from './lib/Counter.svelte'
+  import { onMount } from 'svelte'
+  import getNewData from './newData'
+  import getContent from './dataContent'
+  import getSocialMedia from './socialMediaLinks'
+  import getReports from './reportsLinks'
+  import getAboutContent from './aboutContent'
+  import MainContainer from './lib/MainContainer.svelte'
+
+  let contentDataset = {}
+  let newDataset = {}
+  let socialMediaDataset = {}
+  let reportsDataset = {}
+  let aboutDataset = {}
+
+  onMount(async () => {
+    const resContent = await getContent()
+    contentDataset = resContent
+
+    const resNewData = await getNewData()
+    newDataset = resNewData
+
+    const resSocialMediaData = await getSocialMedia()
+    socialMediaDataset = resSocialMediaData
+
+    const resReports = await getReports()
+    reportsDataset = resReports
+
+    const resAbout = await getAboutContent()
+    aboutDataset = resAbout
+  })
 </script>
 
-<main>
-  <div>
-    <a href="https://vite.dev" target="_blank" rel="noreferrer">
-      <img src={viteLogo} class="logo" alt="Vite Logo" />
-    </a>
-    <a href="https://svelte.dev" target="_blank" rel="noreferrer">
-      <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
-    </a>
+{#if contentDataset.dataFormatted && contentDataset.dataFormatted.length > 0 &&
+  newDataset.technologies && newDataset.technologies.length > 0 &&
+  reportsDataset.reports && reportsDataset.reports.length > 0 &&
+  socialMediaDataset.socialMedia && socialMediaDataset.socialMedia.length > 0 &&
+  aboutDataset.about && aboutDataset.about.length > 0
+}
+  <MainContainer contentDataset = {contentDataset.dataFormatted[0]} {newDataset} {socialMediaDataset} {reportsDataset} about = {aboutDataset.about[0]}/>
+{:else}
+  <div class="loading-container">
+    <div class="loading"></div>
   </div>
-  <h1>Vite + Svelte</h1>
+{/if}
 
-  <div class="card">
-    <Counter />
-  </div>
-
-  <p>
-    Check out <a href="https://github.com/sveltejs/kit#readme" target="_blank" rel="noreferrer">SvelteKit</a>, the official Svelte app framework powered by Vite!
-  </p>
-
-  <p class="read-the-docs">
-    Click on the Vite and Svelte logos to learn more
-  </p>
-</main>
-
-<style>
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
-  }
-  .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-  }
-  .logo.svelte:hover {
-    filter: drop-shadow(0 0 2em #ff3e00aa);
-  }
-  .read-the-docs {
-    color: #888;
-  }
+<style lang="scss" global>
+  @use './scss/main.scss';
 </style>
