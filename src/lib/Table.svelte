@@ -243,4 +243,14 @@
 <style lang="scss">
   @use '../scss/abstracts/' as *;
   @use '../scss/components/table';
+
+  :global(.title--active .table__body__cell__title-container .icon-container::before) {
+    transform: rotate(-45deg);
+    transition: $transition__link;
+  }
+
+  :global(.title--active .table__body__cell__title-container .icon-container::after) {
+    transform: rotate(45deg);
+    transition: $transition__link;
+  }
 </style>
