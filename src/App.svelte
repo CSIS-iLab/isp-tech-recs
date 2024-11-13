@@ -5,7 +5,7 @@
   import getSocialMedia from './socialMediaLinks'
   import getReports from './reportsLinks'
   import getAboutContent from './aboutContent'
-  import MainContainer from './components/MainContainer.svelte'
+  import MainContainer from './lib/MainContainer.svelte'
 
   let contentDataset = {}
   let newDataset = {}
@@ -40,7 +40,7 @@
   <MainContainer contentDataset = {contentDataset.dataFormatted[0]} {newDataset} {socialMediaDataset} {reportsDataset} about = {aboutDataset.about[0]}/>
 {:else}
   <div class="loading-container">
-    <div class="loading" />
+    <div class="loading"></div>
   </div>
 {/if}
 
